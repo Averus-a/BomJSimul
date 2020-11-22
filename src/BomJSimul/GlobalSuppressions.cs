@@ -5,4 +5,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:Elements should be documented", Justification = "<Pending>", Scope = "type", Target = "~T:BomJSimul.Program")]
+[assembly: SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:Elements should be documented", Justification = "<Pending>", Scope = "namespaceanddescendants", Target = "BomJSimul")]
+[assembly: SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1413:Use trailing comma in multi-line initializers", Justification = "<Pending>", Scope = "namespaceanddescendants", Target = "BomJSimul")]
+[assembly: SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1505:Opening braces should not be followed by blank line", Justification = "<Pending>", Scope = "namespaceanddescendants", Target = "BomJSimul")]
+[assembly: SuppressMessage("StyleCop.CSharp.SpacingRules", "SA1028:Code should not contain trailing whitespace", Justification = "<Pending>", Scope = "namespaceanddescendants", Target = "BomJSimul")]
