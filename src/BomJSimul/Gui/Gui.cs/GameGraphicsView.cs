@@ -1,4 +1,4 @@
-﻿namespace BomJSimul.Gui
+﻿namespace BomJSimul.Gui.GuiCs
 {
     using NStack;
 
