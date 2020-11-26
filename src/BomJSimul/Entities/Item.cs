@@ -2,7 +2,23 @@
 {
     internal class Item
     {
+        public Item()
+        {
+        }
+
+        public Item(string name, int count, int strength, Rarity rarity, double dropChance) 
+        {
+            Name = name;
+            Count = count;
+            Strength = strength;
+            Rarity = rarity;
+            DropChance = dropChance;
+        }
+
+
         public string Name { get; set; } // Имя предмета
+
+        public int Count { get; set; } // Количество
 
         public int Strength { get; set; } // Прочность
 
