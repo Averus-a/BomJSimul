@@ -6,6 +6,11 @@
     {
         private readonly List<SceneObject> _liveObject = new List<SceneObject>();
 
+        public GameLoop()
+        {
+
+        }
+
         public void Start()
         {
 
