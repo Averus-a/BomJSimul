@@ -8,7 +8,7 @@ namespace Weighted_Randomizer
     /// A weighted randomizer implementation which uses Vose's alias method.  It is very fast when doing many contiguous calls to NextWithReplacement().
     /// It is slow when making making calls to NextWithRemoval(), or when adding/removing/updating items often between calls to NextWithReplacement().
     /// </summary>
-    /// <typeparam name="TKey">The type of the objects to choose at random</typeparam>
+    /// <typeparam name="TKey">The type of the objects to choose at random.</typeparam>
     public class StaticWeightedRandomizer<TKey> : IWeightedRandomizer<TKey>
     {
         private readonly ThreadAwareRandom _random;
@@ -21,7 +21,7 @@ namespace Weighted_Randomizer
         /// <summary>
         /// The discrete boxes used to hold the keys/aliases in Vose's alias method.  Since we're using integers rather than floating-point
         /// probabilities, I've chosen the word "balls" for the value of the coin-flip used to determine whether to choose the key or the alias
-        /// from the box.  If the number of balls chosen (taken from 1 to _heightPerBox) is <= NumBallsInBox, we choose the Key; otherwise,
+        /// from the box.  If the number of balls chosen (taken from 1 to _heightPerBox) is. <= NumBallsInBox, we choose the Key; otherwise,
         /// we choose the Alias.  Thus, there is exactly a NumBallsInBox/_heightPerBox probability of choosing the Key.
         /// </summary>
         private struct ProbabilityBox
@@ -40,18 +40,23 @@ namespace Weighted_Randomizer
         }
 
         /// <summary>
-        /// Create a new StaticWeightedRandomizer
+        /// Initializes a new instance of the <see cref="StaticWeightedRandomizer{TKey}"/> class.
+        /// Create a new StaticWeightedRandomizer.
         /// </summary>
-        public StaticWeightedRandomizer() : this(new ThreadAwareRandom()) { }
+        public StaticWeightedRandomizer() 
+            : this(new ThreadAwareRandom()) { }
 
         /// <summary>
-        /// Create a new StaticWeightedRandomizer with the given seed
+        /// Initializes a new instance of the <see cref="StaticWeightedRandomizer{TKey}"/> class.
+        /// Create a new StaticWeightedRandomizer with the given seed.
         /// </summary>
-        public StaticWeightedRandomizer(int seed) : this(new ThreadAwareRandom(seed)) { }
+        public StaticWeightedRandomizer(int seed) 
+            : this(new ThreadAwareRandom(seed)) { }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="StaticWeightedRandomizer{TKey}"/> class.
         /// A quick hack that allows me to share code between the two constructors but still set
-        /// readonly fields
+        /// readonly fields.
         /// </summary>
         private StaticWeightedRandomizer(ThreadAwareRandom random)
         {
@@ -66,12 +71,12 @@ namespace Weighted_Randomizer
 
         #region ICollection<T> stuff
         /// <summary>
-        /// Returns the number of items currently in the list
+        /// Returns the number of items currently in the list.
         /// </summary>
         public int Count { get { return _weights.Keys.Count; } }
 
         /// <summary>
-        /// Remove all items from the list
+        /// Remove all items from the list.
         /// </summary>
         public void Clear()
         {
@@ -92,7 +97,7 @@ namespace Weighted_Randomizer
         }
 
         /// <summary>
-        /// Copies the keys to an array, in order
+        /// Copies the keys to an array, in order.
         /// </summary>
         public void CopyTo(TKey[] array, int startingIndex)
         {
@@ -105,15 +110,16 @@ namespace Weighted_Randomizer
         }
 
         /// <summary>
-        /// Returns true if the given item has been added to the list; false otherwise
+        /// Returns true if the given item has been added to the list; false otherwise.
         /// </summary>
+        /// <returns></returns>
         public bool Contains(TKey key)
         {
             return _weights.ContainsKey(key);
         }
 
         /// <summary>
-        /// Adds the given item with a default weight of 1
+        /// Adds the given item with a default weight of 1.
         /// </summary>
         public void Add(TKey key)
         {
@@ -138,7 +144,7 @@ namespace Weighted_Randomizer
         /// <summary>
         /// Remoevs the given item from the list.
         /// </summary>
-        /// <returns>Returns true if the item was successfully deleted, or false if it was not found</returns>
+        /// <returns>Returns true if the item was successfully deleted, or false if it was not found.</returns>
         public bool Remove(TKey key)
         {
             int weight;
@@ -150,7 +156,7 @@ namespace Weighted_Randomizer
             TotalWeight -= weight;
             _listNeedsRebuilding = true;
 
-            //Preemptively clear the _probabilityBoxes list, so we don't unnecessarily hold on to unused references
+            // Preemptively clear the _probabilityBoxes list, so we don't unnecessarily hold on to unused references
             _probabilityBoxes.Clear();
 
             return _weights.Remove(key);
@@ -158,6 +164,7 @@ namespace Weighted_Randomizer
         #endregion
 
         #region IEnumerable<T> stuff
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
@@ -167,18 +174,21 @@ namespace Weighted_Randomizer
         {
             return _weights.Keys.GetEnumerator();
         }
+
         #endregion
 
         #region IWeightedRandomizer<T> stuff
+
         /// <summary>
-        /// The total weight of all the items added so far
+        /// The total weight of all the items added so far.
         /// </summary>
         public long TotalWeight { get; private set; }
 
         /// <summary>
         /// Returns an item chosen randomly by weight (higher weights are more likely),
-        /// and replaces it so that it can be chosen again
+        /// and replaces it so that it can be chosen again.
         /// </summary>
+        /// <returns></returns>
         public TKey NextWithReplacement()
         {
             VerifyHaveItemsToChooseFrom();
@@ -188,7 +198,7 @@ namespace Weighted_Randomizer
                 RebuildProbabilityList();
             }
 
-            //Choose a random box, then flip a biased coin (represented by choosing a number of balls within the box)
+            // Choose a random box, then flip a biased coin (represented by choosing a number of balls within the box)
             int randomIndex = _random.Next(_probabilityBoxes.Count);
             long randomNumBalls = _random.NextLong(_heightPerBox) + 1;
 
@@ -246,7 +256,7 @@ namespace Weighted_Randomizer
         }
 
         /// <summary>
-        /// Step two:  Pair up each item in the large/small lists and create a probability box for them
+        /// Step two:  Pair up each item in the large/small lists and create a probability box for them.
         /// </summary>
         private void CreateSplitProbabilityBoxes(Stack<KeyBallsPair> largeStack, Stack<KeyBallsPair> smallStack)
         {
@@ -256,7 +266,7 @@ namespace Weighted_Randomizer
                 KeyBallsPair smallItem = smallStack.Pop();
                 _probabilityBoxes.Add(new ProbabilityBox(smallItem.Key, largeItem.Key, smallItem.NumBalls));
 
-                //Set the new weight for the largeList item, and move it to smallList if necessary
+                // Set the new weight for the largeList item, and move it to smallList if necessary
                 long difference = _heightPerBox - smallItem.NumBalls;
                 largeItem.NumBalls = largeItem.NumBalls - difference;
                 if (largeItem.NumBalls > _heightPerBox)
@@ -271,7 +281,7 @@ namespace Weighted_Randomizer
         }
 
         /// <summary>
-        /// Step three:  All the remining items in smallList necessarily have probability of 100%
+        /// Step three:  All the remining items in smallList necessarily have probability of 100%.
         /// </summary>
         private void AddRemainingProbabilityBoxes(Stack<KeyBallsPair> smallStack)
         {
@@ -288,7 +298,10 @@ namespace Weighted_Randomizer
             {
                 long remainder = a % b;
                 if (remainder == 0)
+                {
                     return b;
+                }
+
                 a = b;
                 b = remainder;
             }
@@ -298,8 +311,9 @@ namespace Weighted_Randomizer
 
         /// <summary>
         /// Returns an item chosen randomly by weight (higher weights are more likely),
-        /// and removes it so it cannot be chosen again
+        /// and removes it so it cannot be chosen again.
         /// </summary>
+        /// <returns></returns>
         public TKey NextWithRemoval()
         {
             VerifyHaveItemsToChooseFrom();
@@ -315,13 +329,18 @@ namespace Weighted_Randomizer
         private void VerifyHaveItemsToChooseFrom()
         {
             if (Count <= 0)
+            {
                 throw new InvalidOperationException("There are no items in the StaticWeightedRandomizer");
+            }
+
             if (TotalWeight <= 0)
+            {
                 throw new InvalidOperationException("There are no items with positive weight in the StaticWeightedRandomizer");
+            }
         }
 
         /// <summary>
-        /// Shortcut syntax to add, remove, and update an item
+        /// Shortcut syntax to add, remove, and update an item.
         /// </summary>
         public int this[TKey key]
         {
@@ -337,16 +356,21 @@ namespace Weighted_Randomizer
 
         /// <summary>
         /// Returns the weight of the given item.  Throws an exception if the item is not added
-        /// (use .Contains to check first if unsure)
+        /// (use .Contains to check first if unsure).
         /// </summary>
+        /// <returns></returns>
         public int GetWeight(TKey key)
         {
             if (key == null)
+            {
                 throw new ArgumentNullException("key", "key cannot be null");
+            }
 
             int weight;
             if (!_weights.TryGetValue(key, out weight))
+            {
                 throw new KeyNotFoundException("Key not found in StaticWeightedRandomizer: " + key);
+            }
 
             return weight;
         }

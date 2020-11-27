@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    class Player
+    internal class Player
     {
 
         public Player()
@@ -78,26 +78,27 @@
 
         public int Age { get; set; } // возраст
 
-        public int Money { get; set; }  // Money деньги
+        public int Money { get; set; } // Money деньги
 
-        //++++++++++++++++++++++++++++++++Первостепенное+++++++++++++++++++++++++++++++++
+        // ++++++++++++++++++++++++++++++++Первостепенное+++++++++++++++++++++++++++++++++
 
-        public Stats Fearlessness { get; set; } //Б - Бесстрашие
+        public Stats Fearlessness { get; set; } // Б - Бесстрашие
 
-        public Stats Charm { get; set; } //О - Обаяние
+        public Stats Charm { get; set; } // О - Обаяние
 
-        public Stats Wisdom { get; set; } //М - Мудрость
+        public Stats Wisdom { get; set; } // М - Мудрость
 
-        public Stats LifeForce { get; set; } //Ж - Жизненная сила
+        public Stats LifeForce { get; set; } // Ж - Жизненная сила
 
         public Stats Luck { get; set; } // Удача
 
-        //++++++++++++++++++++++++++++++++Второстипенное+++++++++++++++++++++++++++++++++
+        // ++++++++++++++++++++++++++++++++Второстипенное+++++++++++++++++++++++++++++++++
 
         public List<MinorStats> MinorStats = new List<MinorStats>()
         {
 
         };
+
         private static int BasicStatCalculation(int a, int b)
         {
             return a = a + b;

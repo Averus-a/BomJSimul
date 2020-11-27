@@ -5,7 +5,7 @@
     using System.ComponentModel;
     using System.Text;
 
-    class MinorStats : INotifyPropertyChanged
+    internal class MinorStats : INotifyPropertyChanged
     {
         public MinorStats() 
         {
@@ -24,7 +24,7 @@
         private int level;
 
         /// <summary>
-        /// Уровень вкачености
+        /// Уровень вкачености.
         /// </summary>
         public int Level 
         {

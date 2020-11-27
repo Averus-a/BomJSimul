@@ -31,7 +31,6 @@
             var s = $"{Name} [Количество: {Count}] [{Rarity}]";
             return s;
         }
-        // Имя_предмета [Количество: XX] [Класс_редкости]
     }
 
     internal enum Rarity

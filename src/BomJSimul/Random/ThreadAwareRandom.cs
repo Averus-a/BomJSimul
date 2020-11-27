@@ -8,17 +8,17 @@
     /// (which is not true of Random - two instances of Random created on separate threads at nearly the same time
     /// will return all the same results, which is not what we want)
     /// 
-    /// Could also be used later, if I want, to allow a common interface between Random and RNGCryptoServiceProvider
+    /// Could also be used later, if I want, to allow a common interface between Random and RNGCryptoServiceProvider.
     /// </summary>
     public class ThreadAwareRandom
     {
         private static readonly Random _global = new Random();
-        private Random _local; //Could make it completely thread-safe using ThreadLocal<>, but that is .Net 4.0 only :(
+        private Random _local; // Could make it completely thread-safe using ThreadLocal<>, but that is .Net 4.0 only :(
 
         public ThreadAwareRandom()
         {
-            //Instantiating multiple Random() instances in a row very quickly will result in
-            //all of them returning the same numbers.  This is a workaround for that problem.
+            // Instantiating multiple Random() instances in a row very quickly will result in
+            // all of them returning the same numbers.  This is a workaround for that problem.
             int seed;
             lock (_global)
             {

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Weighted_Randomizer
+﻿namespace Weighted_Randomizer
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Represents a class which can choose weighted items at random; that is, it can randomly choose items from a list, giving some items higher
     /// probability of being chosen than others.  It supports both choosing with replacement (so the same item can be chosen multiple times) and
@@ -10,30 +10,32 @@ namespace Weighted_Randomizer
     /// 
     /// Note that though this interface is enumerable, the enumeration is not necessarily ordered by anything.
     /// </summary>
-    /// <typeparam name="TKey">The type of the objects to choose at random</typeparam>
+    /// <typeparam name="TKey">The type of the objects to choose at random.</typeparam>
     public interface IWeightedRandomizer<TKey> : ICollection<TKey>
     {
         /// <summary>
-        /// The total weight of all the items added so far
+        /// Gets the total weight of all the items added so far.
         /// </summary>
         long TotalWeight { get; }
 
         /// <summary>
         /// Returns an item chosen randomly by weight (higher weights are more likely),
-        /// and replaces it so that it can be chosen again
+        /// and replaces it so that it can be chosen again.
         /// </summary>
         /// <exception cref="InvalidOperationException">
-        /// Thrown if the collection is empty or has only 0-weight items
+        /// Thrown if the collection is empty or has only 0-weight items.
         /// </exception>
+        /// <returns></returns>
         TKey NextWithReplacement();
 
         /// <summary>
         /// Returns an item chosen randomly by weight (higher weights are more likely),
-        /// and removes it so it cannot be chosen again
+        /// and removes it so it cannot be chosen again.
         /// </summary>
         /// <exception cref="InvalidOperationException">
-        /// Thrown if the collection is empty or has only 0-weight items
+        /// Thrown if the collection is empty or has only 0-weight items.
         /// </exception>
+        /// <returns></returns>
         TKey NextWithRemoval();
 
         /// <summary>
@@ -44,10 +46,10 @@ namespace Weighted_Randomizer
         /// Thrown if weight &lt; 0.
         /// </exception>
         /// <exception cref="ArgumentException">
-        /// Thrown if the key already exists in the collection
+        /// Thrown if the key already exists in the collection.
         /// </exception>
         /// <exception cref="ArgumentNullException">
-        /// Thrown if the key is null
+        /// Thrown if the key is null.
         /// </exception>
         void Add(TKey key, int weight);
 
@@ -55,26 +57,27 @@ namespace Weighted_Randomizer
         /// Shortcut syntax to add, remove, and update an item.  Higher weights are more likely to be chosen.
         /// </summary>
         /// <exception cref="KeyNotFoundException">
-        /// Thrown if attempting to retrieve a key which does not exist in the collection
+        /// Thrown if attempting to retrieve a key which does not exist in the collection.
         /// </exception>
         /// <exception cref="ArgumentOutOfRangeException">
         /// Thrown if attempting to set the weight to a value &lt; 0.
         /// </exception>
         /// <exception cref="ArgumentNullException">
-        /// Thrown if the key is null
+        /// Thrown if the key is null.
         /// </exception>
         int this[TKey key] { get; set; }
 
         /// <summary>
         /// Returns the weight of the given item.  Throws an exception if the item is not added
-        /// (use .Contains to check first if unsure)
+        /// (use .Contains to check first if unsure).
         /// </summary>
         /// <exception cref="KeyNotFoundException">
-        /// Thrown if the key does not exist in the collection
+        /// Thrown if the key does not exist in the collection.
         /// </exception>
         /// <exception cref="ArgumentNullException">
-        /// Thrown if the key is null
+        /// Thrown if the key is null.
         /// </exception>
+        /// <returns></returns>
         int GetWeight(TKey key);
 
         /// <summary>
@@ -85,7 +88,7 @@ namespace Weighted_Randomizer
         /// Thrown if attempting to set the weight to a value &lt; 0.
         /// </exception>
         /// <exception cref="ArgumentNullException">
-        /// Thrown if the key is null
+        /// Thrown if the key is null.
         /// </exception>
         void SetWeight(TKey key, int weight);
     }

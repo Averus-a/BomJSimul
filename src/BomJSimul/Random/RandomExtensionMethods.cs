@@ -5,23 +5,26 @@ namespace Weighted_Randomizer
     public static class RandomExtensionMethods
     {
         /// <summary>
-        /// Returns a random long from min (inclusive) to max (exclusive)
+        /// Returns a random long from min (inclusive) to max (exclusive).
         /// </summary>
-        /// <param name="random">The given random instance</param>
-        /// <param name="min">The inclusive minimum bound</param>
-        /// <param name="max">The exclusive maximum bound.  Must be greater or equal to min</param>
+        /// <param name="random">The given random instance.</param>
+        /// <param name="min">The inclusive minimum bound.</param>
+        /// <param name="max">The exclusive maximum bound.  Must be greater or equal to min.</param>
+        /// <returns></returns>
         public static long NextLong(this Random random, long min, long max)
         {
             if (max < min)
+            {
                 throw new ArgumentOutOfRangeException("max", "max must be >= min!");
+            }
 
-            //Working with ulong so that modulo works correctly with values > long.MaxValue
+            // Working with ulong so that modulo works correctly with values > long.MaxValue
             ulong uRange = (ulong)(max - min);
 
-            //Loop to prevent a modolo bias; see http://stackoverflow.com/a/10984975/238419
-            //for more information.
-            //In the worst case, the expected number of calls is 2 (though usually it's
-            //much closer to 1, depending on min/max) so this loop doesn't really hurt performance at all.
+            // Loop to prevent a modolo bias; see http://stackoverflow.com/a/10984975/238419
+            // for more information.
+            // In the worst case, the expected number of calls is 2 (though usually it's
+            // much closer to 1, depending on min/max) so this loop doesn't really hurt performance at all.
             ulong ulongRand;
             do
             {
@@ -34,10 +37,11 @@ namespace Weighted_Randomizer
         }
 
         /// <summary>
-        /// Returns a random long from 0 (inclusive) to max (exclusive)
+        /// Returns a random long from 0 (inclusive) to max (exclusive).
         /// </summary>
-        /// <param name="random">The given random instance</param>
-        /// <param name="max">The exclusive maximum bound.  Must be greater or equal to min</param>
+        /// <param name="random">The given random instance.</param>
+        /// <param name="max">The exclusive maximum bound.  Must be greater or equal to min.</param>
+        /// <returns></returns>
         public static long NextLong(this Random random, long max)
         {
             return random.NextLong(0, max);
@@ -45,9 +49,10 @@ namespace Weighted_Randomizer
 
         /// <summary>
         /// Returns a random long over all possible values of long (except long.MaxValue, similar to
-        /// random.Next())
+        /// random.Next()).
         /// </summary>
-        /// <param name="random">The given random instance</param>
+        /// <param name="random">The given random instance.</param>
+        /// <returns></returns>
         public static long NextLong(this Random random)
         {
             return random.NextLong(long.MinValue, long.MaxValue);

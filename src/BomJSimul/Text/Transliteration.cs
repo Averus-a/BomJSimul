@@ -8,10 +8,11 @@
         Gost,
         ISO
     }
+
     public static class Transliteration
     {
-        private static Dictionary<string, string> gost = new Dictionary<string, string>(); //ГОСТ 16876-71
-        private static Dictionary<string, string> iso = new Dictionary<string, string>(); //ISO 9-95
+        private static Dictionary<string, string> gost = new Dictionary<string, string>(); // ГОСТ 16876-71
+        private static Dictionary<string, string> iso = new Dictionary<string, string>(); // ISO 9-95
 
 
         static Transliteration()
@@ -50,7 +51,7 @@
             gost.Add("Щ", "SHH");
             gost.Add("Ъ", "'");
             gost.Add("Ы", "Y");
-            gost.Add("Ь", "");
+            gost.Add("Ь", string.Empty);
             gost.Add("Э", "EH");
             gost.Add("Ю", "YU");
             gost.Add("Я", "YA");
@@ -82,14 +83,14 @@
             gost.Add("ч", "ch");
             gost.Add("ш", "sh");
             gost.Add("щ", "shh");
-            gost.Add("ъ", "");
+            gost.Add("ъ", string.Empty);
             gost.Add("ы", "y");
-            gost.Add("ь", "");
+            gost.Add("ь", string.Empty);
             gost.Add("э", "eh");
             gost.Add("ю", "yu");
             gost.Add("я", "ya");
-            gost.Add("«", "");
-            gost.Add("»", "");
+            gost.Add("«", string.Empty);
+            gost.Add("»", string.Empty);
             gost.Add("—", "-");
             gost.Add(" ", "-");
 
@@ -129,7 +130,7 @@
             iso.Add("Щ", "SHH");
             iso.Add("Ъ", "'");
             iso.Add("Ы", "Y");
-            iso.Add("Ь", "");
+            iso.Add("Ь", string.Empty);
             iso.Add("Э", "E");
             iso.Add("Ю", "YU");
             iso.Add("Я", "YA");
@@ -160,14 +161,14 @@
             iso.Add("ч", "ch");
             iso.Add("ш", "sh");
             iso.Add("щ", "shh");
-            iso.Add("ъ", "");
+            iso.Add("ъ", string.Empty);
             iso.Add("ы", "y");
-            iso.Add("ь", "");
+            iso.Add("ь", string.Empty);
             iso.Add("э", "e");
             iso.Add("ю", "yu");
             iso.Add("я", "ya");
-            iso.Add("«", "");
-            iso.Add("»", "");
+            iso.Add("«", string.Empty);
+            iso.Add("»", string.Empty);
             iso.Add("—", "-");
             iso.Add(" ", "-");
         }

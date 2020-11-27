@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    class Stats
+    internal class Stats
     {
         public Stats()
         {
