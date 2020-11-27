@@ -6,7 +6,7 @@
 
     internal class Player
     {
-
+        //lalalalalalala
         public Player()
         {
             MinorStats = new List<MinorStats>()
