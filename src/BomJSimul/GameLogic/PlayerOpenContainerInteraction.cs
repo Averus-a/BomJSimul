@@ -112,12 +112,14 @@
                 _randomizerDropChance.Add(i, i.DropChance);
             }
 
+            if (!_randomizerDropChance.Any())
+            {
+                return GetRandomItem();
+            }
+
             var randomItem = _randomizerDropChance.NextWithReplacement();
 
-            
             return randomItem;
-            
         }
-        
     }
 }
