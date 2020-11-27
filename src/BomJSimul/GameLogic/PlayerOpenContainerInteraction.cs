@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using BomJSimul.Engine;
     using BomJSimul.Entities;
+    using Weighted_Randomizer;
 
     internal class PlayerOpenContainerInteraction : BomJSimul.Engine.SceneEvent
     {
@@ -18,7 +19,6 @@
             new Item()
             {
                 Name = "Лопата",
-                Count = 1,
                 Strength = Randomness(1,100),
                 Rarity = Rarity.Rare,
                 DropChance = 30,
@@ -27,7 +27,6 @@
             new Item()
             {
                 Name = "Удочка",
-                Count = 1,
                 Strength = Randomness(1,100),
                 Rarity = Rarity.Rare,
                 DropChance = 30,
@@ -37,7 +36,6 @@
             new Item()
             {
                 Name = "Бутылка",
-                Count = 1,
                 Strength = Randomness(1,100),
                 Rarity = Rarity.Normal,
                 DropChance = 70,
@@ -55,7 +53,6 @@
             new Item()
             {
                 Name = "Тулуп",
-                Count = 1,
                 Strength = Randomness(1,100),
                 Rarity = Rarity.VeryRare,
                 DropChance = 30,
@@ -89,6 +86,18 @@
 
             // Вернуть полученное значение
             return value;
+        }
+
+        private IWeightedRandomizer<Item> _randomizer = new StaticWeightedRandomizer<Item>();
+        Item GetRandomItem()
+        { 
+            foreach (Item i in _containerObjects)// тип инт или итем? или поставить вар?
+            {
+                _randomizer.Add(i, i.DropChance);
+            }
+            Item randomItem = _randomizer.NextWithReplacement();
+
+            return randomItem;
         }
     }
 }

@@ -18,21 +18,21 @@
 
         public string Name { get; set; } // Имя предмета
 
-        public int Count { get; set; } // Количество
+        public int Count { get; set; } = 1; // Количество (по умолчанию 1)
 
         public int Strength { get; set; } // Прочность
 
         public Rarity Rarity { get; set; } // Групы редкости
 
-        public double DropChance { get; set; }// Шанс выпадения
+        public int DropChance { get; set; }// Шанс выпадения
 
     }
 
     internal enum Rarity
     {
-        Normal = 0,
-        Rare = 1,
+        Normal = 4,
+        Rare = 3,
         VeryRare = 2,
-        Legendary = 3
+        Legendary = 1
     }
 }
