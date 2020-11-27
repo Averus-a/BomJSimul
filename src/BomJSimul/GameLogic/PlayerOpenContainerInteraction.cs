@@ -60,11 +60,12 @@
             },
         };
 
-        public void Open()
+        public Item Open()
         {
             if (_lastTimeOpened.DayOfYear < DateTime.UtcNow.DayOfYear)
             {
                 HaveYouUsed = false;
+                return null;
             }
 
             if (!HaveYouUsed)
@@ -72,9 +73,9 @@
                 HaveYouUsed = true;
                 _lastTimeOpened = DateTime.UtcNow;
 
-                return;
+                return GetRandomItem();
             }
-
+            return null;
         }
 
         private static int Randomness(int min, int max)
