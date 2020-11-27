@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using BomJSimul.Engine;
     using BomJSimul.Entities;
     using Weighted_Randomizer;
@@ -88,17 +89,23 @@
             return value;
         }
 
-        private IWeightedRandomizer<Item> _randomizer = new StaticWeightedRandomizer<Item>();
-        
+        private IWeightedRandomizer<Item> _randomizerDropChance = new StaticWeightedRandomizer<Item>();
+        private IWeightedRandomizer<Rarity> _randomizerRarity = new StaticWeightedRandomizer<Rarity>();
         private Item GetRandomItem()
         {
-            // тип инт или итем? или поставить вар?
-            foreach (var i in _containerObjects)
+            foreach (Rarity i in Enum.GetValues(typeof(Rarity)))
             {
-                _randomizer.Add(i, i.DropChance);
+                _randomizerRarity.Add(i, (int)i);
             }
 
-            var randomItem = _randomizer.NextWithReplacement();
+            var randomRarity = _randomizerRarity.NextWithReplacement();
+
+            foreach (var i in _containerObjects.Where(item => item.Rarity == randomRarity))
+            {
+                _randomizerDropChance.Add(i, i.DropChance);
+            }
+
+            var randomItem = _randomizerDropChance.NextWithReplacement();
 
             return randomItem;
         }
