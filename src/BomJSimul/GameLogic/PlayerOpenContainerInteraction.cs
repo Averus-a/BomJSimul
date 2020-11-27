@@ -91,7 +91,7 @@
 
         private IWeightedRandomizer<Item> _randomizerDropChance = new StaticWeightedRandomizer<Item>();
         private IWeightedRandomizer<Rarity> _randomizerRarity = new StaticWeightedRandomizer<Rarity>();
-        private Item GetRandomItem()
+        public Item GetRandomItem()
         {
             foreach (Rarity i in Enum.GetValues(typeof(Rarity)))
             {
@@ -107,7 +107,10 @@
 
             var randomItem = _randomizerDropChance.NextWithReplacement();
 
+            
             return randomItem;
+            
         }
+        
     }
 }

@@ -12,7 +12,8 @@
         private static void Main(string[] args)
         {
             CompositionRoot.Initialize();
-
+            var t = new BomJSimul.GameLogic.PlayerOpenContainerInteraction();
+            Console.WriteLine(t.GetRandomItem());
             // Start game loop
             var mainLoop = new GameLoop();
 
