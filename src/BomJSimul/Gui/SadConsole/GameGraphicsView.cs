@@ -1,7 +1,9 @@
 ﻿namespace BomJSimul.Gui.Sad
 {
+    using BomJSimul.Text;
     using Microsoft.Xna.Framework;
     using SadConsole;
+    using System.Text;
 
     internal class GameGraphicsView : Console
     {
@@ -16,6 +18,8 @@
         public GameGraphicsView(Console mainConsole, string title = null, int width = 300, int height = 200)
             : base(width, height)
         {
+            UsePrintProcessor = true;
+
             this.Parent = mainConsole;
 
             var backgroundColor = Color.Blue;
@@ -35,6 +39,7 @@
 
             // Border & Header
             DrawBorders(width, height, borderColor, backgroundColor);
+            DrawHeader(title, foregroundColor);
         }
 
         private void FillColor(Console console, Color background, Color foreground)
@@ -46,7 +51,6 @@
         {
             // 179 - vertical line
             // 186 - horizontal line
-
             DrawLine(new Point(0, 0), new Point(0, height), foreground, background, 179); // Left side
             DrawLine(new Point(width - 1, 0), new Point(width - 1, height - 1), foreground, background, 179); // Right side
 
@@ -54,11 +58,17 @@
             DrawLine(new Point(0, height - 1), new Point(width - 1, height - 1), foreground, background, 196);
 
             // Angles
-
             SetGlyph(0, 0, 218); // Left-top
             SetGlyph(width - 1, 0, 191); // Right-top
             SetGlyph(0, height - 1, 192); // Left-bottom
-            SetGlyph(width - 1, height - 1, 217);
+            SetGlyph(width - 1, height - 1, 217); // Right-bottom
+        }
+
+        private void DrawHeader(string str, Color foreground)
+        {
+            var translatedHeader = Transliteration.Front(str);
+
+            Print(2, 0, $" [c:g f:LimeGreen:Orange:{translatedHeader.Length}]{translatedHeader} ");
         }
     }
 }
