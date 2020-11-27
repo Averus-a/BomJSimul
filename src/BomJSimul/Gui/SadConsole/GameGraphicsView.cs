@@ -20,12 +20,12 @@
 
             var backgroundColor = Color.Blue;
             var foregroundColor = Color.White;
-
             var borderColor = Color.White;
 
             this.Fill(new Rectangle(new Point(0, 0), new Point(width, height)), Color.White, Color.Blue, 0);
 
-            _innerConsole = new Console(width - 1, height - 1);
+            _innerConsole = new Console(width - 2, height - 2);
+            _innerConsole.Position = new Point(this.Position.X + 1, this.Position.Y + 1);
 
             FillColor(this, backgroundColor, foregroundColor);
 
@@ -34,12 +34,20 @@
             FillColor(_innerConsole, Color.Yellow, foregroundColor);
 
             // Border & Header
-            DrawLine(new Point(0, 0), new Point(200, 0), borderColor, borderColor);
+            DrawBorders(width, height, borderColor);
         }
 
         private void FillColor(Console console, Color background, Color foreground)
         {
             console.Fill(new Rectangle(new Point(0, 0), new Point(console.Width, console.Height)), foreground, background, 0);
+        }
+
+        private void DrawBorders(int width, int height, Color borderColor)
+        {
+            DrawLine(new Point(0, 0), new Point(0, height), borderColor, borderColor);
+            DrawLine(new Point(0, 0), new Point(width, 0), borderColor, borderColor);
+            //DrawLine(new Point(width, 0), new Point(width, height), borderColor, borderColor);
+            //DrawLine(new Point(0, 0), new Point(width, 0), borderColor, borderColor);
         }
     }
 }

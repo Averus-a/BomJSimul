@@ -91,6 +91,13 @@
 
         private IWeightedRandomizer<Item> _randomizerDropChance = new StaticWeightedRandomizer<Item>();
         private IWeightedRandomizer<Rarity> _randomizerRarity = new StaticWeightedRandomizer<Rarity>();
+
+        /// <summary>
+        /// Return random item picked from drop-list with chose rarity.
+        /// </summary>
+        /// <returns>
+        /// Item.
+        /// </returns>
         public Item GetRandomItem()
         {
             foreach (Rarity i in Enum.GetValues(typeof(Rarity)))
