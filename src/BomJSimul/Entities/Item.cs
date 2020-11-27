@@ -6,7 +6,7 @@
         {
         }
 
-        public Item(string name, int count, int strength, Rarity rarity, double dropChance) 
+        public Item(string name, int count, int strength, Rarity rarity, int dropChance) 
         {
             Name = name;
             Count = count;

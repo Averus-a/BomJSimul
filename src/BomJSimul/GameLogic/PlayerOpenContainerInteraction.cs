@@ -76,7 +76,7 @@
 
         }
 
-        static int Randomness(int min, int max)
+        private static int Randomness(int min, int max)
         {
             // Создание объекта для генерации чисел
             Random rnd = new Random();
@@ -89,13 +89,16 @@
         }
 
         private IWeightedRandomizer<Item> _randomizer = new StaticWeightedRandomizer<Item>();
-        Item GetRandomItem()
-        { 
-            foreach (Item i in _containerObjects)// тип инт или итем? или поставить вар?
+        
+        private Item GetRandomItem()
+        {
+            // тип инт или итем? или поставить вар?
+            foreach (var i in _containerObjects)
             {
                 _randomizer.Add(i, i.DropChance);
             }
-            Item randomItem = _randomizer.NextWithReplacement();
+
+            var randomItem = _randomizer.NextWithReplacement();
 
             return randomItem;
         }

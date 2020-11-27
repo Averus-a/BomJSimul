@@ -18,15 +18,23 @@
         {
             this.Parent = mainConsole;
 
+            var backgroundColor = Color.Blue;
+            var foregroundColor = Color.White;
+
+            var borderColor = Color.White;
+
             this.Fill(new Rectangle(new Point(0, 0), new Point(width, height)), Color.White, Color.Blue, 0);
 
             _innerConsole = new Console(width - 1, height - 1);
 
-            FillColor(this, Color.Blue, Color.White);
+            FillColor(this, backgroundColor, foregroundColor);
 
             _innerConsole.Parent = this;
 
-            FillColor(_innerConsole, Color.Yellow, Color.Yellow);
+            FillColor(_innerConsole, Color.Yellow, foregroundColor);
+
+            // Border & Header
+            DrawLine(new Point(0, 0), new Point(200, 0), borderColor, borderColor);
         }
 
         private void FillColor(Console console, Color background, Color foreground)
