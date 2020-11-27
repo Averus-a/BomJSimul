@@ -34,7 +34,7 @@
             FillColor(_innerConsole, Color.Yellow, foregroundColor);
 
             // Border & Header
-            DrawBorders(width, height, borderColor);
+            DrawBorders(width, height, borderColor, backgroundColor);
         }
 
         private void FillColor(Console console, Color background, Color foreground)
@@ -42,12 +42,23 @@
             console.Fill(new Rectangle(new Point(0, 0), new Point(console.Width, console.Height)), foreground, background, 0);
         }
 
-        private void DrawBorders(int width, int height, Color borderColor)
+        private void DrawBorders(int width, int height, Color foreground, Color background)
         {
-            DrawLine(new Point(0, 0), new Point(0, height), borderColor, borderColor);
-            DrawLine(new Point(0, 0), new Point(width, 0), borderColor, borderColor);
-            //DrawLine(new Point(width, 0), new Point(width, height), borderColor, borderColor);
-            //DrawLine(new Point(0, 0), new Point(width, 0), borderColor, borderColor);
+            // 179 - vertical line
+            // 186 - horizontal line
+
+            DrawLine(new Point(0, 0), new Point(0, height), foreground, background, 179); // Left side
+            DrawLine(new Point(width - 1, 0), new Point(width - 1, height - 1), foreground, background, 179); // Right side
+
+            DrawLine(new Point(0, 0), new Point(width, 0), foreground, background, 196);
+            DrawLine(new Point(0, height - 1), new Point(width - 1, height - 1), foreground, background, 196);
+
+            // Angles
+
+            SetGlyph(0, 0, 218); // Left-top
+            SetGlyph(width - 1, 0, 191); // Right-top
+            SetGlyph(0, height - 1, 192); // Left-bottom
+            SetGlyph(width - 1, height - 1, 217);
         }
     }
 }
