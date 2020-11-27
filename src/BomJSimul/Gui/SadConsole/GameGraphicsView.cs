@@ -68,7 +68,7 @@
         {
             var translatedHeader = Transliteration.Front(str);
 
-            Print(2, 0, $" [c:g f:LimeGreen:Orange:{translatedHeader.Length}]{translatedHeader} ");
+            Print(2, 0, $" [c:g f:MediumPurple:Red:{translatedHeader.Length}]{translatedHeader} ");
         }
     }
 }
