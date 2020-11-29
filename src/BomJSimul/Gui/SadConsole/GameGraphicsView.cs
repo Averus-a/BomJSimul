@@ -29,7 +29,7 @@
 
             _innerConsole.Parent = this;
 
-            _innerConsole.Fill(foregroundColor, Color.Yellow, 0);
+            _innerConsole.Fill(foregroundColor, Color.LightBlue, 0);
 
             // Border & Header
             this.DrawBorders(width, height, borderColor, backgroundColor);
