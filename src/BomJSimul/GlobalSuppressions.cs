@@ -16,3 +16,4 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1507:Code should not contain multiple blank lines in a row", Justification = "Disabled SA1507", Scope = "namespaceanddescendants", Target = "BomJSimul")]
 [assembly: SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1512:Single-line comments should not be followed by blank line", Justification = "Disabled SA1512", Scope = "namespaceanddescendants", Target = "BomJSimul")]
 [assembly: SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1515:Single-line comment should be preceded by blank line", Justification = "Disabled SA1515", Scope = "namespaceanddescendants", Target = "BomJSimul")]
+[assembly: SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1623:Property summary documentation should match accessors", Justification = "Disabled SA1623")]

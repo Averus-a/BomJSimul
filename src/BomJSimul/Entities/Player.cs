@@ -6,69 +6,71 @@
 
     internal class Player
     {
+        private readonly List<MinorStats> _minorStats = new List<MinorStats>();
+
         public Player()
         {
-            MinorStats = new List<MinorStats>()
+            _minorStats = new List<MinorStats>()
             {
                 new MinorStats()
                 {
-                    Name = "Второстипенный стат 0",
+                    Name = "Второстепенный стат 0",
                     Major1 = Fearlessness,
                     Major2 = Fearlessness,
                 },
                 new MinorStats()
                 {
-                    Name = "Второстипенный стат 1",
+                    Name = "Второстепенный стат 1",
                 },
 
                 new MinorStats()
                 {
-                    Name = "Второстипенный стат 2",
+                    Name = "Второстепенный стат 2",
                 },
 
                 new MinorStats()
                 {
-                    Name = "Второстипенный стат 3",
+                    Name = "Второстепенный стат 3",
                 },
 
                 new MinorStats()
                 {
-                    Name = "Второстипенный стат 4",
+                    Name = "Второстепенный стат 4",
                 },
 
                 new MinorStats()
                 {
-                    Name = "Второстипенный стат 5",
+                    Name = "Второстепенный стат 5",
                 },
 
                 new MinorStats()
                 {
-                    Name = "Второстипенный стат 6",
+                    Name = "Второстепенный стат 6",
                 },
 
                 new MinorStats()
                 {
-                    Name = "Второстипенный стат 7",
+                    Name = "Второстепенный стат 7",
                 },
 
                 new MinorStats()
                 {
-                    Name = "Второстипенный стат 8",
+                    Name = "Второстепенный стат 8",
                 },
 
                 new MinorStats()
                 {
-                    Name = "Второстипенный стат 9",
+                    Name = "Второстепенный стат 9",
                 },
 
                 new MinorStats()
                 {
-                    Name = "Второстипенный стат 10",
+                    Name = "Второстепенный стат 10",
                 },
 
                 new MinorStats()
                 {
-                    Name = "Второстипенный стат 11",
+                    Name = "Второстепенный стат 11",
                 },
             };
         }
@@ -81,27 +83,34 @@
 
         // ++++++++++++++++++++++++++++++++Первостепенное+++++++++++++++++++++++++++++++++
 
-        public Stats Fearlessness { get; set; } // Б - Бесстрашие
+        /// <summary>
+        /// Бесстрашие.
+        /// </summary>
+        public Stats Fearlessness { get; set; }
 
-        public Stats Charm { get; set; } // О - Обаяние
+        /// <summary>
+        /// Обаяние.
+        /// </summary>
+        public Stats Charm { get; set; } 
 
-        public Stats Wisdom { get; set; } // М - Мудрость
+        /// <summary>
+        /// Мудрость.
+        /// </summary>
+        public Stats Wisdom { get; set; }
 
-        public Stats LifeForce { get; set; } // Ж - Жизненная сила
+        /// <summary>
+        /// Жизнь.
+        /// </summary>
+        public Stats Life { get; set; }
 
-        public Stats Luck { get; set; } // Удача
-
-        // ++++++++++++++++++++++++++++++++Второстипенное+++++++++++++++++++++++++++++++++
-
-        public List<MinorStats> MinorStats = new List<MinorStats>()
-        {
-
-        };
+        /// <summary>
+        /// Удача.
+        /// </summary>
+        public Stats Luck { get; set; }
 
         private static int BasicStatCalculation(int a, int b)
         {
             return a = a + b;
         }
-
     }
 }

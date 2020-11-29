@@ -7,6 +7,8 @@
 
     internal class MinorStats : INotifyPropertyChanged
     {
+        private int level;
+
         public MinorStats() 
         {
         }
@@ -19,29 +21,34 @@
             Major2 = major2;
         }
 
-        public string Name { get; set; } // Имя второстипенного стата
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        private int level;
+        public string Name { get; set; } // Имя второстипенного стата
 
         /// <summary>
         /// Уровень вкачености.
         /// </summary>
         public int Level 
         {
-            get { return level; }
-            set { level = value; RaisePropertyChanged(nameof(Level)); }
+            get
+            {
+                return level;
+            }
+
+            set
+            {
+                level = value;
+                RaisePropertyChanged(nameof(Level));
+            }
         }
 
         public Stats Major1 { get; set; }
 
         public Stats Major2 { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private void RaisePropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
     }
 }
