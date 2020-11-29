@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-
-namespace Weighted_Randomizer
+﻿namespace Weighted_Randomizer
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+
     /// <summary>
     /// A weighted randomizer implementation which uses Vose's alias method.  It is very fast when doing many contiguous calls to NextWithReplacement().
     /// It is slow when making making calls to NextWithRemoval(), or when adding/removing/updating items often between calls to NextWithReplacement().

@@ -27,17 +27,15 @@
 
             var graphicsView = new GameGraphicsView(mainScreen, $"Симулятор Бомжа v{version}", screenWidth * 2 / 3, screenHeight * 3 / 4);
 
-            // var infoView = new GameInfoView("Сообщения", 40, 15);
-            // infoView.Fill(Color.Violet, Color.AliceBlue, 0);
-            // infoView.Print(4, 4, "Cообщения");
+            var infoView = new GameInfoView(mainScreen, "Информация", screenWidth, screenHeight * 1 / 4);
 
-            // var logView = new GameLogView("Информация", 60, 3);
-            // logView.Fill(Color.Black, Color.DarkBlue, 0);
-            // logView.Print(4, 4, "Информация");
+            var logView = new GameLogView(mainScreen, "Сообщения", screenWidth * 1 / 3, screenHeight * 3 / 4);
 
-            graphicsView.Parent = mainScreen;
-            // infoView.Parent = mainScreen;
-            // logView.Parent = mainScreen;
+            int infoViewOffsetY = 0;
+            int logViewOffsetX = 0;
+
+            infoView.Position = new Point(0, graphicsView.Position.Y + graphicsView.Height + infoViewOffsetY);
+            logView.Position = new Point(graphicsView.Position.X + graphicsView.Width + logViewOffsetX, 0);
 
             return mainScreen;
         }
