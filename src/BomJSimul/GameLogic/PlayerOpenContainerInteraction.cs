@@ -103,7 +103,7 @@
         {
             foreach (Rarity i in Enum.GetValues(typeof(Rarity)))
             {
-                _randomizerRarity?.Add(i, (int)i);
+                _randomizerRarity?.Add(i, (int)i); // не уверен куда поставить ? но какжется это не решает проблему
             }
 
             var randomRarity = _randomizerRarity.NextWithReplacement();
