@@ -3,7 +3,6 @@
     using BomJSimul.Text;
     using Microsoft.Xna.Framework;
     using SadConsole;
-    using System.Text;
 
     internal class GameGraphicsView : Console
     {
