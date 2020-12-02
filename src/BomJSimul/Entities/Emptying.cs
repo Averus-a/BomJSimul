@@ -1,4 +1,4 @@
-﻿namespace BomJSimul.NewP
+﻿namespace BomJSimul.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -7,7 +7,7 @@
 /// <summary>
 /// Опоражнение кишечника и мочевого пузыря.
 /// </summary>
-    class Emptying
+    class Emptying : BomJSimul.Engine.SceneEvent
     {
 
     }

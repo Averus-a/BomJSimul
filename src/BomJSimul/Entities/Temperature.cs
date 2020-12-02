@@ -1,4 +1,4 @@
-﻿namespace BomJSimul.NewP
+﻿namespace BomJSimul.Entities
 {
     using System;
     using System.Collections.Generic;
