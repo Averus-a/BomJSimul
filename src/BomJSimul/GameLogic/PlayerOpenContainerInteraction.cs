@@ -9,6 +9,7 @@
 
     internal class PlayerOpenContainerInteraction : BomJSimul.Engine.SceneEvent
     {
+
         private readonly List<Item> _containerObjects = new List<Item>()
         {
             new Item()
@@ -53,8 +54,19 @@
                 DropChance = 30,
             },
         };
-        
+        private readonly IWeightedRandomizer<Rarity> _randomizerRarity = new StaticWeightedRandomizer<Rarity>();
+
         private DateTime _lastTimeOpened; 
+
+        public PlayerOpenContainerInteraction()
+        {
+            var rarities = Enum.GetValues(typeof(Rarity));
+
+            foreach (Rarity i in rarities)
+            {
+                _randomizerRarity.Add(i, (int)i);
+            }
+        }
         
         public SceneObject TrashBin { get; set; }
 
@@ -75,6 +87,7 @@
 
                 return GetRandomItem();
             }
+
             return null;
         }
 
@@ -90,8 +103,6 @@
             return value;
         }
 
-        private IWeightedRandomizer<Item> _randomizerDropChance = new StaticWeightedRandomizer<Item>();
-        private IWeightedRandomizer<Rarity> _randomizerRarity = new StaticWeightedRandomizer<Rarity>();
 
         /// <summary>
         /// Return random item picked from drop-list with chose rarity.
@@ -101,24 +112,21 @@
         /// </returns>
         public Item GetRandomItem()
         {
-            foreach (Rarity i in Enum.GetValues(typeof(Rarity)))
-            {
-                _randomizerRarity?.Add(i, (int)i); // не уверен куда поставить ? но какжется это не решает проблему
-            }
-
             var randomRarity = _randomizerRarity.NextWithReplacement();
+
+            var randomizerDropChance = new StaticWeightedRandomizer<Item>();
 
             foreach (var i in _containerObjects.Where(item => item.Rarity == randomRarity))
             {
-                _randomizerDropChance.Add(i, i.DropChance);
+                randomizerDropChance.Add(i, i.DropChance);
             }
 
-            if (!_randomizerDropChance.Any())
+            if (!randomizerDropChance.Any())
             {
                 return GetRandomItem();
             }
 
-            var randomItem = _randomizerDropChance.NextWithReplacement();
+            var randomItem = randomizerDropChance.NextWithReplacement();
 
             return randomItem;
         }
