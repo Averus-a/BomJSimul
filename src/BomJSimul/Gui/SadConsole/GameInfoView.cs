@@ -37,9 +37,9 @@
 
         private void DrawHeader(string str, Color foreground)
         {
-            var translatedHeader = Transliteration.Front(str);
+            var translatedHeader = Transliteration.From(str);
 
-            Print(2, 0, $" [c:g f:MediumPurple:Red:{translatedHeader.Length}]{translatedHeader} ");
+            Print(1, 0, $" [c:g f:MediumPurple:Red:{translatedHeader.Length}]{translatedHeader} ");
         }
     }
 }
