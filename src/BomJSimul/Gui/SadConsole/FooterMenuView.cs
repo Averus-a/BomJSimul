@@ -8,13 +8,12 @@
         public FooterMenuView(Console mainConsole, int height)
                 : base(mainConsole.Width, height)
         {
+            this.Parent = mainConsole;
+
             var backgroundColor = Color.DarkGray;
             var foregroundColor = Color.White;
-            var borderColor = Color.White;
 
-            this.Fill(Color.White, Color.Blue, 0);
-
-
+            this.Fill(foregroundColor, backgroundColor, 0);
         }
     }
 }
