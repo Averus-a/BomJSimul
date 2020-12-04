@@ -14,7 +14,7 @@
         {
             this.Parent = mainConsole;
 
-            this.Fill(Color.White, Color.LightSlateGray, 0);
+            this.Fill(Color.White, Color.DarkGray, 0);
 
             _menuItems = new ObservableCollection<MenuItem>();
 

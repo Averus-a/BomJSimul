@@ -21,33 +21,36 @@
         private static Console Initialize(int screenWidth, int screenHeight)
         {
             var version = Assembly.GetExecutingAssembly().GetName().Version;
+            var headerMenuHeight = 1;
             var footerMenuHeight = 1;
 
             var mainScreen = new Console(screenWidth, screenHeight);
             mainScreen.Fill(new Rectangle(new Point(0, 0), new Point(screenWidth, screenHeight)), Color.White, Color.DarkBlue, 0);
 
-            var graphicsView = new GameGraphicsView(mainScreen, $"Симулятор Бомжа v{version}", screenWidth * 2 / 3, screenHeight * 3 / 4 - 1);
+            var graphicsView = new GameGraphicsView(mainScreen, $"Симулятор Бомжа v{version}", screenWidth * 2 / 3, screenHeight * 3 / 4 - headerMenuHeight);
 
-            var infoView = new GameInfoView(mainScreen, "Информация", screenWidth, screenHeight * 1 / 4 - footerMenuHeight);
+            var infoView = new GameInfoView(mainScreen, "Информация", screenWidth * 1 / 3, screenHeight * 3 / 4 - headerMenuHeight);
 
-            var logView = new GameLogView(mainScreen, "Сообщения", screenWidth * 1 / 3, screenHeight * 3 / 4);
+            var logView = new GameLogView(mainScreen, "Сообщения", screenWidth, screenHeight * 1 / 4 - footerMenuHeight);
 
-            var footerMenuView = new FooterMenuView(mainScreen, footerMenuHeight);
+            int infoViewOffsetX = 0;
+            int logViewOffsetY = 0;
 
-            int infoViewOffsetY = 0;
-            int logViewOffsetX = 0;
-            int footerMenuViewOffsetX = 0;
-
-            infoView.Position = new Point(0, graphicsView.Position.Y + graphicsView.Height + infoViewOffsetY);
-            logView.Position = new Point(graphicsView.Position.X + graphicsView.Width + logViewOffsetX, 0);
-            footerMenuView.Position = new Point(footerMenuViewOffsetX, infoView.Position.Y + infoView.Height);
-
+            graphicsView.Position = new Point(0, 0 + headerMenuHeight);
+            infoView.Position = new Point(graphicsView.Position.X + graphicsView.Width + infoViewOffsetX, 0 + headerMenuHeight);
+            logView.Position = new Point(0, graphicsView.Position.Y + graphicsView.Height + logViewOffsetY);
+            
             // menus
-            var topMenu = new HeaderMenuView(mainScreen, 1);
+            var topMenu = new HeaderMenuView(mainScreen, headerMenuHeight);
             topMenu.Add(new MenuItem("Игра"));
             topMenu.Add(new MenuItem("Настройки"));
             topMenu.Add(new MenuItem("О программе"));
             topMenu.DrawMenu();
+
+            var footerMenuView = new FooterMenuView(mainScreen, footerMenuHeight);
+            footerMenuView.Position = new Point(0, screenHeight - footerMenuHeight);
+
+
 
             return mainScreen;
         }
