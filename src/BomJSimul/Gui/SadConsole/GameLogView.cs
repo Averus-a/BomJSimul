@@ -19,7 +19,7 @@
             var foregroundColor = Color.White;
             var borderColor = Color.White;
 
-            this.Fill(Color.White, Color.Blue, 0);
+            this.Fill(foregroundColor, backgroundColor, 0);
 
             _innerConsole = new Console(width - 2, height - 2);
             _innerConsole.Position = new Point(this.Position.X + 1, this.Position.Y + 1);
