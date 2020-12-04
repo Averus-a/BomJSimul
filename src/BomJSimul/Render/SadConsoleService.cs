@@ -25,7 +25,7 @@
             var mainScreen = new Console(screenWidth, screenHeight);
             mainScreen.Fill(new Rectangle(new Point(0, 0), new Point(screenWidth, screenHeight)), Color.White, Color.DarkBlue, 0);
 
-            var graphicsView = new GameGraphicsView(mainScreen, $"Симулятор Бомжа v{version}", screenWidth * 2 / 3, screenHeight * 3 / 4);
+            var graphicsView = new GameGraphicsView(mainScreen, $"Симулятор Бомжа v{version}", screenWidth * 2 / 3, screenHeight * 3 / 4 - 1);
 
             var infoView = new GameInfoView(mainScreen, "Информация", screenWidth, screenHeight * 1 / 4);
 
@@ -36,6 +36,13 @@
 
             infoView.Position = new Point(0, graphicsView.Position.Y + graphicsView.Height + infoViewOffsetY);
             logView.Position = new Point(graphicsView.Position.X + graphicsView.Width + logViewOffsetX, 0);
+
+            // menus
+            var topMenu = new HeaderMenuView(mainScreen, 1);
+            topMenu.Add(new MenuItem("Игра"));
+            topMenu.Add(new MenuItem("Настройки"));
+            topMenu.Add(new MenuItem("О программе"));
+            topMenu.DrawMenu();
 
             return mainScreen;
         }

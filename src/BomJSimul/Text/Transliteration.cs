@@ -173,12 +173,12 @@
             iso.Add(" ", "-");
         }
 
-        public static string Front(string text)
+        public static string From(string text)
         {
-            return Front(text, TransliterationType.ISO);
+            return From(text, TransliterationType.ISO);
         }
 
-        public static string Front(string text, TransliterationType type)
+        public static string From(string text, TransliterationType type)
         {
             var output = text;
 
