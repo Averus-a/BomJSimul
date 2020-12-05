@@ -47,8 +47,13 @@
             topMenu.Add(new MenuItem("О программе"));
             topMenu.DrawMenu();
 
-            var footerMenuView = new FooterMenuView(mainScreen, footerMenuHeight);
-            footerMenuView.Position = new Point(0, screenHeight - footerMenuHeight);
+            var footerMenu = new FooterMenuView(mainScreen, footerMenuHeight);
+            footerMenu.Position = new Point(0, screenHeight - footerMenuHeight);
+            footerMenu.Add(new MenuItem("F1 Помощь"));
+            footerMenu.Add(new MenuItem("F2 Загрузить"));
+            footerMenu.Add(new MenuItem("F3 Сохранить"));
+            footerMenu.Add(new MenuItem("^Q Выход"));
+            footerMenu.DrawMenu();
 
 
 
