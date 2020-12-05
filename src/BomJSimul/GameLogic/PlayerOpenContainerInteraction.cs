@@ -9,13 +9,14 @@
 
     internal class PlayerOpenContainerInteraction : BomJSimul.Engine.SceneEvent
     {
+        private static readonly Random _random = new Random();
 
         private readonly List<Item> _containerObjects = new List<Item>()
         {
             new Item()
             {
                 Name = "Лопата",
-                Strength = Randomness(1, 100),
+                Strength = _random.Next(1, 100),
                 Rarity = Rarity.Rare,
                 DropChance = 30,
             },
@@ -23,7 +24,7 @@
             new Item()
             {
                 Name = "Удочка",
-                Strength = Randomness(1, 100),
+                Strength = _random.Next(1, 100),
                 Rarity = Rarity.Rare,
                 DropChance = 30,
 
@@ -32,7 +33,7 @@
             new Item()
             {
                 Name = "Бутылка",
-                Strength = Randomness(1, 100),
+                Strength = _random.Next(1, 100),
                 Rarity = Rarity.Normal,
                 DropChance = 70,
             },
@@ -40,8 +41,8 @@
             new Item()
             {
                 Name = "Мелочь",
-                Count = Randomness(10, 100),
-                Strength = Randomness(1, 100),
+                Count = _random.Next(10, 100),
+                Strength = _random.Next(1, 100),
                 Rarity = Rarity.Rare,
                 DropChance = 30,
             },
@@ -49,7 +50,7 @@
             new Item()
             {
                 Name = "Тулуп",
-                Strength = Randomness(1, 100),
+                Strength = _random.Next(1, 100),
                 Rarity = Rarity.VeryRare,
                 DropChance = 30,
             },
@@ -90,19 +91,6 @@
 
             return null;
         }
-
-        private static int Randomness(int min, int max)
-        {
-            // Создание объекта для генерации чисел
-            Random rnd = new Random();
-
-            // Получить очередное (в данном случае - первое) случайное число
-            int value = rnd.Next(min, max);
-
-            // Вернуть полученное значение
-            return value;
-        }
-
 
         /// <summary>
         /// Return random item picked from drop-list with chose rarity.
