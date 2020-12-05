@@ -22,6 +22,14 @@
                 var t = new BomJSimul.GameLogic.PlayerOpenContainerInteraction();
                 Console.WriteLine(t.GetRandomItem());
 
+                var r = new BomJSimul.GameLogic.PlayerUsesSlotMachine();
+                var player = new Entities.Player();
+                player.Money = 100;
+                player.Luck.Level = 100;
+                Console.WriteLine(r.TryingToWinMoney(player, 10, 3));
+                Console.WriteLine($"Ваши деньги: {player.Money}");
+                Console.WriteLine($"Ваша удача: {player.Luck.Level}");
+
                 // Start game loop
                 var mainLoop = new GameLoop();
 

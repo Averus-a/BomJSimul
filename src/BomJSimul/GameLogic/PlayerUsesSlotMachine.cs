@@ -8,19 +8,19 @@
     class PlayerUsesSlotMachine
     {
         /// <summary>
-        /// 
+        /// слотмашина.
         /// </summary>
         /// <param name="player">Текущий игрок.</param>
         /// <param name="rate">Cтавка.</param>
         /// <param name="maximumRate">Максимальный выигрыш (прибыль).</param>
         /// <returns>возвращает рандомное число если денег больше чем ставка</returns>
-        private static int? TryingToWinMoney(Player player, int rate, int maximumRate)
+        public int? TryingToWinMoney(Player player, int rate, int maximumRate)
         {
             if (player.Money >= rate)
             {
                 player.Money -= rate;
 
-                var result = new Random().Next(0, maximumRate);
+                var result = new Random().Next(0, maximumRate + 1);
 
                 if (result == 0)
                 {
