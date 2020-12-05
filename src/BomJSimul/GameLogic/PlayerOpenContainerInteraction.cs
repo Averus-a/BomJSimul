@@ -91,7 +91,7 @@
             return null;
         }
 
-        private static int Randomness(int min, int max)
+        public static int Randomness(int min, int max)
         {
             // Создание объекта для генерации чисел
             Random rnd = new Random();
