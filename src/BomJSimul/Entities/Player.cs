@@ -86,27 +86,27 @@
         /// <summary>
         /// Бесстрашие.
         /// </summary>
-        public Stats Fearlessness { get; set; }
+        public Stats Fearlessness { get; set; } = new Stats();
 
         /// <summary>
         /// Обаяние.
         /// </summary>
-        public Stats Charm { get; set; } 
+        public Stats Charm { get; set; } = new Stats();
 
         /// <summary>
         /// Мудрость.
         /// </summary>
-        public Stats Wisdom { get; set; }
+        public Stats Wisdom { get; set; } = new Stats();
 
         /// <summary>
         /// Жизнь.
         /// </summary>
-        public Stats Life { get; set; }
+        public Stats Life { get; set; } = new Stats();
 
         /// <summary>
         /// Удача.
         /// </summary>
-        public Stats Luck { get; set; }
+        public Stats Luck { get; set; } = new Stats();
 
         private static int BasicStatCalculation(int a, int b)
         {
