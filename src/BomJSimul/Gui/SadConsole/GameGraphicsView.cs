@@ -44,7 +44,7 @@
 
         }
 
-        private void DrawText(Console _innerConsole, Color foreground)
+        private void DrawText(ControlsConsole _innerConsole, Color foreground)
         {
             var r = new BomJSimul.GameLogic.PlayerUsesSlotMachine();
             var player = new Entities.Player();

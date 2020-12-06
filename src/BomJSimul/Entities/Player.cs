@@ -108,9 +108,5 @@
         /// </summary>
         public Stats Luck { get; set; } = new Stats();
 
-        private static int BasicStatCalculation(int a, int b)
-        {
-            return a = a + b;
-        }
     }
 }

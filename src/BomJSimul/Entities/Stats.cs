@@ -20,7 +20,13 @@
 
         public string Name { get; set; } // Имя стата
 
-        public int Level { get; set; } // Уровень вкачености
+        public int Level { get; private set; } // Уровень вкачености
+
+
+        public int Update(int value)
+        {
+            return Level = Level + value;
+        }
 
     }
 }

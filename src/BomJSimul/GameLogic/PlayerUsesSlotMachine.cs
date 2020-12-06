@@ -22,14 +22,14 @@
 
                 if (result == 0)
                 {
-                    player.Luck.Level -= 1;
+                    player.Luck.Update(-1);
 
                     Console.WriteLine("Лузер Лузер!");
                 }
 
                 if (result == maximumRate)
                 {
-                    player.Luck.Level += 1;
+                    player.Luck.Update(1);
 
                     Console.WriteLine("А ты фартовый!");
                 }
