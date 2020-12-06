@@ -2,6 +2,7 @@
 {
     using System.Reflection;
     using BomJSimul.Gui.Sad;
+    using BomJSimul.Gui.Sad.Themes;
     using Microsoft.Xna.Framework;
     using SadConsole;
 
@@ -24,7 +25,10 @@
             var headerMenuHeight = 1;
             var footerMenuHeight = 1;
 
+            SadConsole.Themes.Library.Default.SetControlTheme(typeof(MenuItem), new MenuItemGenericTheme());
+
             var mainScreen = new Console(screenWidth, screenHeight);
+
             mainScreen.Fill(new Rectangle(new Point(0, 0), new Point(screenWidth, screenHeight)), Color.White, Color.DarkBlue, 0);
 
             var graphicsView = new GameGraphicsView(mainScreen, $"Симулятор Бомжа v{version}", screenWidth * 2 / 3, screenHeight * 3 / 4 - headerMenuHeight);
@@ -42,20 +46,18 @@
             
             // menus
             var topMenu = new HeaderMenuView(mainScreen, headerMenuHeight);
-            topMenu.Add(new MenuItem("Игра"));
-            topMenu.Add(new MenuItem("Настройки"));
-            topMenu.Add(new MenuItem("О программе"));
-            topMenu.DrawMenu();
+            topMenu.AddMenu(new MenuItem("Игра"));
+            topMenu.AddMenu(new MenuItem("Настройки"));
+            topMenu.AddMenu(new MenuItem("О программе"));
+            topMenu.AttachMenu();
 
             var footerMenu = new FooterMenuView(mainScreen, footerMenuHeight);
             footerMenu.Position = new Point(0, screenHeight - footerMenuHeight);
-            footerMenu.Add(new MenuItem("F1 Помощь"));
-            footerMenu.Add(new MenuItem("F2 Загрузить"));
-            footerMenu.Add(new MenuItem("F3 Сохранить"));
-            footerMenu.Add(new MenuItem("^Q Выход"));
-            footerMenu.DrawMenu();
-
-
+            footerMenu.AddMenu(new MenuItem("F1 Помощь"));
+            footerMenu.AddMenu(new MenuItem("F2 Загрузить"));
+            footerMenu.AddMenu(new MenuItem("F3 Сохранить"));
+            footerMenu.AddMenu(new MenuItem("Q Выход"));
+            footerMenu.AttachMenu();
 
             return mainScreen;
         }

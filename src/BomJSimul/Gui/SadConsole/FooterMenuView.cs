@@ -1,11 +1,10 @@
 ﻿namespace BomJSimul.Gui.Sad
 {
+    using System.Collections.ObjectModel;
     using Microsoft.Xna.Framework;
     using SadConsole;
-    using System.Collections.ObjectModel;
-    using System.Text;
 
-    internal class FooterMenuView : Console
+    internal class FooterMenuView : ControlsConsole
     {
         private readonly ObservableCollection<MenuItem> _menuItems;
         public FooterMenuView(Console mainConsole, int height)
@@ -19,28 +18,29 @@
             this.Fill(foregroundColor, backgroundColor, 0);
 
             _menuItems = new ObservableCollection<MenuItem>();
-
-            DrawMenu();
         }
 
         public ObservableCollection<MenuItem> Items => _menuItems;
 
-        public void Add(MenuItem menuItem)
+        public void AddMenu(MenuItem menuItem)
         {
             Items.Add(menuItem);
         }
 
-        public void DrawMenu()
+        public void AttachMenu()
         {
-            var sb = new StringBuilder();
-
             for (int i = 0; i < _menuItems.Count; i++)
             {
-                sb.Append(_menuItems[i].Name);
-                sb.Append("   |"); // 3 spaces + delimiter
-            }
+                var currentMenu = _menuItems[i];
 
-            Print(1, 0, sb.ToString());
+                if (i > 0)
+                {
+                    var previousMenu = _menuItems[i - 1];
+                    currentMenu.Position = new Point(previousMenu.Position.X + previousMenu.Width + 1, 0);
+                }
+
+                Add(currentMenu);
+            }
         }
     }
 }
