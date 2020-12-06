@@ -9,7 +9,7 @@
     {
         private int level;
 
-        public MinorStats() 
+        public MinorStats()
         {
         }
 
@@ -28,7 +28,7 @@
         /// <summary>
         /// Уровень вкачености.
         /// </summary>
-        public int Level 
+        public int Level
         {
             get
             {

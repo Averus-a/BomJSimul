@@ -4,7 +4,7 @@
 
     internal class GameInfoView : Terminal.Gui.Window
     {
-        public GameInfoView(ustring title = null) 
+        public GameInfoView(ustring title = null)
             : base(title)
         {
         }

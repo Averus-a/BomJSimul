@@ -1,7 +1,10 @@
-﻿using System;
-
-namespace Weighted_Randomizer
+﻿namespace Weighted_Randomizer
 {
+    using System;
+
+    /// <summary>
+    /// Extensions for Random class.
+    /// </summary>
     public static class RandomExtensionMethods
     {
         /// <summary>
@@ -31,7 +34,8 @@ namespace Weighted_Randomizer
                 byte[] buf = new byte[8];
                 random.NextBytes(buf);
                 ulongRand = (ulong)BitConverter.ToInt64(buf, 0);
-            } while (ulongRand > ulong.MaxValue - ((ulong.MaxValue % uRange) + 1) % uRange);
+            }
+            while (ulongRand > ulong.MaxValue - ((ulong.MaxValue % uRange) + 1) % uRange);
 
             return (long)(ulongRand % uRange) + min;
         }

@@ -4,7 +4,7 @@
 
     internal class GameLogView : Terminal.Gui.Window
     {
-        public GameLogView(ustring title = null) 
+        public GameLogView(ustring title = null)
             : base(title)
         {
         }

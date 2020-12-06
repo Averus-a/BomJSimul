@@ -57,7 +57,7 @@
         };
         private readonly IWeightedRandomizer<Rarity> _randomizerRarity = new StaticWeightedRandomizer<Rarity>();
 
-        private DateTime _lastTimeOpened; 
+        private DateTime _lastTimeOpened;
 
         public PlayerOpenContainerInteraction()
         {
@@ -68,7 +68,7 @@
                 _randomizerRarity.Add(i, (int)i);
             }
         }
-        
+
         public SceneObject TrashBin { get; set; }
 
         public bool HaveYouUsed { get; set; }

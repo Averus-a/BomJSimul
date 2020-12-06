@@ -44,11 +44,12 @@
             button.Surface.Fill(
                 appearance.Foreground,
                 appearance.Background,
-                appearance.Glyph, null);
+                appearance.Glyph,
+                null);
 
             if (ShowEnds && button.Width >= 3)
             {
-                button.Surface.Print(1, middle, (button.Text).Align(button.TextAlignment, button.Width - 2));
+                button.Surface.Print(1, middle, button.Text.Align(button.TextAlignment, button.Width - 2));
                 button.Surface.SetGlyph(0, middle, EndCharacterLeft);
                 button.Surface.SetGlyph(button.Width - 1, middle, EndCharacterRight);
             }

@@ -1,11 +1,9 @@
 ﻿namespace BomJSimul.GameLogic
 {
-    using BomJSimul.Entities;
     using System;
-    using System.Collections.Generic;
-    using System.Text;
+    using BomJSimul.Entities;
 
-    class PlayerUsesSlotMachine
+    internal class PlayerUsesSlotMachine
     {
         /// <summary>
         /// слотмашина.

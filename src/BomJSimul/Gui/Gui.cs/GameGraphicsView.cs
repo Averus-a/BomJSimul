@@ -4,7 +4,7 @@
 
     internal class GameGraphicsView : Terminal.Gui.Window
     {
-        public GameGraphicsView(ustring title = null) 
+        public GameGraphicsView(ustring title = null)
             : base(title)
         {
         }

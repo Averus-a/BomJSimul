@@ -43,14 +43,14 @@
         /// Initializes a new instance of the <see cref="StaticWeightedRandomizer{TKey}"/> class.
         /// Create a new StaticWeightedRandomizer.
         /// </summary>
-        public StaticWeightedRandomizer() 
+        public StaticWeightedRandomizer()
             : this(new ThreadAwareRandom()) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StaticWeightedRandomizer{TKey}"/> class.
         /// Create a new StaticWeightedRandomizer with the given seed.
         /// </summary>
-        public StaticWeightedRandomizer(int seed) 
+        public StaticWeightedRandomizer(int seed)
             : this(new ThreadAwareRandom(seed)) { }
 
         /// <summary>
@@ -218,6 +218,96 @@
             public long NumBalls;
         }
 
+        /// <summary>
+        /// Returns an item chosen randomly by weight (higher weights are more likely),
+        /// and removes it so it cannot be chosen again.
+        /// </summary>
+        /// <returns></returns>
+        public TKey NextWithRemoval()
+        {
+            VerifyHaveItemsToChooseFrom();
+
+            TKey randomKey = NextWithReplacement();
+            Remove(randomKey);
+            return randomKey;
+        }
+
+        /// <summary>
+        /// Shortcut syntax to add, remove, and update an item.
+        /// </summary>
+        public int this[TKey key]
+        {
+            get
+            {
+                return GetWeight(key);
+            }
+            set
+            {
+                SetWeight(key, value);
+            }
+        }
+
+        /// <summary>
+        /// Returns the weight of the given item.  Throws an exception if the item is not added
+        /// (use .Contains to check first if unsure).
+        /// </summary>
+        /// <returns></returns>
+        public int GetWeight(TKey key)
+        {
+            if (key == null)
+            {
+                throw new ArgumentNullException("key", "key cannot be null");
+            }
+
+            int weight;
+            if (!_weights.TryGetValue(key, out weight))
+            {
+                throw new KeyNotFoundException("Key not found in StaticWeightedRandomizer: " + key);
+            }
+
+            return weight;
+        }
+
+        /// <summary>
+        /// Updates the weight of the given item, or adds it if it has not already been added.
+        /// If weight &lt;= 0, the item is removed.
+        /// </summary>
+        public void SetWeight(TKey key, int weight)
+        {
+            if (weight < 0)
+            {
+                throw new ArgumentOutOfRangeException("weight", weight, "Cannot add a weight with value < 0");
+            }
+
+            if (Contains(key))
+            {
+                TotalWeight += weight - _weights[key];
+                _weights[key] = weight;
+            }
+            else
+            {
+                Add(key, weight);
+            }
+            _listNeedsRebuilding = true;
+        }
+
+        private static long GreatestCommonDenominator(long a, long b)
+        {
+            while (b > 0)
+            {
+                long remainder = a % b;
+                if (remainder == 0)
+                {
+                    return b;
+                }
+
+                a = b;
+                b = remainder;
+            }
+
+            return a;
+        }
+
         private void RebuildProbabilityList()
         {
             long gcd = GreatestCommonDenominator(Count, TotalWeight);
@@ -292,37 +382,6 @@
             }
         }
 
-        private static long GreatestCommonDenominator(long a, long b)
-        {
-            while (b > 0)
-            {
-                long remainder = a % b;
-                if (remainder == 0)
-                {
-                    return b;
-                }
-
-                a = b;
-                b = remainder;
-            }
-
-            return a;
-        }
-
-        /// <summary>
-        /// Returns an item chosen randomly by weight (higher weights are more likely),
-        /// and removes it so it cannot be chosen again.
-        /// </summary>
-        /// <returns></returns>
-        public TKey NextWithRemoval()
-        {
-            VerifyHaveItemsToChooseFrom();
-
-            TKey randomKey = NextWithReplacement();
-            Remove(randomKey);
-            return randomKey;
-        }
-
         /// <summary>
         /// Throws an exception if the Count or TotalWeight are 0, meaning that are no items to choose from.
         /// </summary>
@@ -337,65 +396,6 @@
             {
                 throw new InvalidOperationException("There are no items with positive weight in the StaticWeightedRandomizer");
             }
-        }
-
-        /// <summary>
-        /// Shortcut syntax to add, remove, and update an item.
-        /// </summary>
-        public int this[TKey key]
-        {
-            get
-            {
-                return GetWeight(key);
-            }
-            set
-            {
-                SetWeight(key, value);
-            }
-        }
-
-        /// <summary>
-        /// Returns the weight of the given item.  Throws an exception if the item is not added
-        /// (use .Contains to check first if unsure).
-        /// </summary>
-        /// <returns></returns>
-        public int GetWeight(TKey key)
-        {
-            if (key == null)
-            {
-                throw new ArgumentNullException("key", "key cannot be null");
-            }
-
-            int weight;
-            if (!_weights.TryGetValue(key, out weight))
-            {
-                throw new KeyNotFoundException("Key not found in StaticWeightedRandomizer: " + key);
-            }
-
-            return weight;
-        }
-
-        /// <summary>
-        /// Updates the weight of the given item, or adds it if it has not already been added.
-        /// If weight &lt;= 0, the item is removed.
-        /// </summary>
-        public void SetWeight(TKey key, int weight)
-        {
-            if (weight < 0)
-            {
-                throw new ArgumentOutOfRangeException("weight", weight, "Cannot add a weight with value < 0");
-            }
-
-            if (Contains(key))
-            {
-                TotalWeight += (weight - _weights[key]);
-                _weights[key] = weight;
-            }
-            else
-            {
-                Add(key, weight);
-            }
-            _listNeedsRebuilding = true;
         }
         #endregion
     }

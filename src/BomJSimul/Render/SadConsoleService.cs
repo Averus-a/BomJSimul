@@ -43,7 +43,7 @@
             graphicsView.Position = new Point(0, 0 + headerMenuHeight);
             infoView.Position = new Point(graphicsView.Position.X + graphicsView.Width + infoViewOffsetX, 0 + headerMenuHeight);
             logView.Position = new Point(0, graphicsView.Position.Y + graphicsView.Height + logViewOffsetY);
-            
+
             // menus
             var topMenu = new HeaderMenuView(mainScreen, headerMenuHeight);
             topMenu.AddMenu(new MenuItem("Игра"));
