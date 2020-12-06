@@ -6,7 +6,7 @@
 
     internal class GameGraphicsView : Console
     {
-        private Console _innerConsole;
+        private ControlsConsole _innerConsole;
 
         public GameGraphicsView(Console mainConsole, string title = null, int width = 300, int height = 200)
             : base(width, height)
@@ -21,7 +21,7 @@
 
             this.Fill(foregroundColor, backgroundColor, 0);
 
-            _innerConsole = new Console(width - 2, height - 2);
+            _innerConsole = new ControlsConsole(width - 2, height - 2);
             _innerConsole.Position = new Point(this.Position.X + 1, this.Position.Y + 1);
 
             Fill(foregroundColor, backgroundColor, 0);
