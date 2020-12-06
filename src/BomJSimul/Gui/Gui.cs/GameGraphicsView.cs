@@ -7,6 +7,7 @@
         public GameGraphicsView(ustring title = null)
             : base(title)
         {
+
         }
     }
 }
