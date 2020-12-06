@@ -26,7 +26,7 @@
                 var player = new Entities.Player();
                 player.Money = 100;
                 player.Luck.Level = 100;
-                Console.WriteLine(r.TryingToWinMoney(player, 10, 3));
+                Console.WriteLine(r.TryingToWinMoney(player, 10, 20));
                 Console.WriteLine($"Ваши деньги: {player.Money}");
                 Console.WriteLine($"Ваша удача: {player.Luck.Level}");
 
