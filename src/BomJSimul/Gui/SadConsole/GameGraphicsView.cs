@@ -49,7 +49,7 @@
             var r = new BomJSimul.GameLogic.PlayerUsesSlotMachine();
             var player = new Entities.Player();
             player.Money = 100;
-            player.Luck.Level = 100;
+            player.Luck.Update(100);
             _innerConsole.Print(1, 0, $"{r.TryingToWinMoney(player, 10, 20)}");
             _innerConsole.Print(1, 4, Transliteration.From($"Ваши деньги: {player.Money}"));
             _innerConsole.Print(1, 5, Transliteration.From($"Ваша удача: {player.Luck.Level}"));
