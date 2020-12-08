@@ -17,7 +17,7 @@
             Cost = item.Count;
         }
 
-        public Item(string name, int count, int strength, Rarity rarity, int dropChance, int cost)
+        public Item(string name, int count, Rarity rarity, int dropChance, int cost, int strength = 100)
         {
             Name = name;
             Count = count;

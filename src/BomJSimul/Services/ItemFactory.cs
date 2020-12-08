@@ -17,7 +17,6 @@
                 new Item()
                 {
                     Name = "Лопата",
-                    Strength = 100,
                     Rarity = Rarity.Rare,
                     DropChance = 30,
                 }
@@ -28,7 +27,6 @@
                 new Item()
                 {
                     Name = "Удочка",
-                    Strength = 100,
                     Rarity = Rarity.Rare,
                     DropChance = 30,
 
@@ -40,7 +38,6 @@
                 new Item()
                 {
                     Name = "Бутылка",
-                    Strength = 100,
                     Rarity = Rarity.Normal,
                     DropChance = 70,
                 }
@@ -52,7 +49,6 @@
                 {
                     Name = "Мелочь",
                     Count = 100,
-                    Strength = 100,
                     Rarity = Rarity.Rare,
                     DropChance = 30,
                 }
@@ -63,7 +59,6 @@
                 new Item()
                 {
                     Name = "Тулуп",
-                    Strength = 100,
                     Rarity = Rarity.VeryRare,
                     DropChance = 30,
                 }
