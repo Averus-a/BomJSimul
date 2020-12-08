@@ -4,15 +4,27 @@
     {
         public Item()
         {
+
         }
 
-        public Item(string name, int count, int strength, Rarity rarity, int dropChance)
+        public Item(Item item)
+        {
+            Name = item.Name;
+            Count = item.Count;
+            Strength = item.Strength;
+            Rarity = item.Rarity;
+            DropChance = item.DropChance;
+            Cost = item.Count;
+        }
+
+        public Item(string name, int count, int strength, Rarity rarity, int dropChance, int cost)
         {
             Name = name;
             Count = count;
             Strength = strength;
             Rarity = rarity;
             DropChance = dropChance;
+            Cost = cost;
         }
 
         /// <summary>
@@ -50,6 +62,13 @@
             var s = $"{Name} [Количество: {Count}] [{Rarity}]";
             return s;
         }
+
+        public Item Clone(Item item)
+        {
+            return new Item(item);
+        }
+        
+
     }
 
     internal enum Rarity
