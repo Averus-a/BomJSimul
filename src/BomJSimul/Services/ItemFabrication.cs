@@ -1,10 +1,10 @@
-﻿namespace BomJSimul.GameLogic
+﻿namespace BomJSimul.Services
 {
     using System;
     using System.Collections.Generic;
     using System.Text;
 
-    class Store
+    class ItemFabrication
     {
 
 
