@@ -15,16 +15,35 @@
             DropChance = dropChance;
         }
 
+        /// <summary>
+        /// Имя предмета.
+        /// </summary>
+        public string Name { get; set; }
 
-        public string Name { get; set; } // Имя предмета
+        /// <summary>
+        /// Количество (по умолчанию 1).
+        /// </summary>
+        public int Count { get; set; } = 1;
 
-        public int Count { get; set; } = 1; // Количество (по умолчанию 1)
+        /// <summary>
+        /// Прочность.
+        /// </summary>
+        public int Strength { get; set; }
 
-        public int Strength { get; set; } // Прочность
+        /// <summary>
+        /// Группы редкости.
+        /// </summary>
+        public Rarity Rarity { get; set; }
 
-        public Rarity Rarity { get; set; } // Групы редкости
+        /// <summary>
+        /// Шанс выпадения.
+        /// </summary>
+        public int DropChance { get; set; }
 
-        public int DropChance { get; set; }// Шанс выпадения
+        /// <summary>
+        /// Цена предмета.
+        /// </summary>
+        public int Cost { get; set; }
 
         public override string ToString()
         {
