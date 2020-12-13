@@ -11,7 +11,7 @@
         /// <param name="player">Текущий игрок.</param>
         /// <param name="rate">Cтавка.</param>
         /// <param name="maximumRate">Максимальный выигрыш (прибыль).</param>
-        /// <returns>возвращает рандомное число если денег больше чем ставка</returns>
+        /// <returns>возвращает рандомное число если денег больше чем ставка.</returns>
         public int? TryingToWinMoney(Player player, int rate, int maximumRate)
         {
             if (player.Money >= rate)

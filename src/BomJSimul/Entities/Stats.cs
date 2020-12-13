@@ -1,9 +1,5 @@
 ﻿namespace BomJSimul.Entities
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     internal class Stats
     {
         public Stats()
@@ -25,7 +21,7 @@
 
         public int Update(int value)
         {
-            return Level = Level + value;
+            return Level += value;
         }
 
     }

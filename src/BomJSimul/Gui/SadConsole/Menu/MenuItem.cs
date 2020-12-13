@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-    using BomJSimul.Gui.Sad.Themes;
     using BomJSimul.Text;
     using SadConsole.Controls;
 

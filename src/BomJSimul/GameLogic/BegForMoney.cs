@@ -1,21 +1,20 @@
 ﻿namespace BomJSimul.GameLogic
 {
-    using BomJSimul.Entities;
     using System;
     using System.Collections.Generic;
-    using System.Text;
+    using BomJSimul.Entities;
 
     /// <summary>
     /// Просить милостыню (+рандомно денег).
     /// </summary>
-    class BegForMoney
+    internal class BegForMoney
     {
+        private static readonly Random _random = new Random();
+
         /// <summary>
         /// реплика дающего.
         /// </summary>
         private readonly List<string> _speechOfTheGiver = new List<string>();
-
-        private static readonly Random _random = new Random();
 
         public BegForMoney()
         {

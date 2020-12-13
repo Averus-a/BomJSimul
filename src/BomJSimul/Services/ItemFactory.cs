@@ -1,16 +1,15 @@
 ﻿namespace BomJSimul.Services
 {
-    using BomJSimul.Entities;
     using System;
     using System.Collections.Generic;
-    using System.Text;
+    using BomJSimul.Entities;
 
     /// <summary>
-    /// 
+    /// Produce new Item objects.
     /// </summary>
-    class ItemFactory
+    internal class ItemFactory
     {
-        private static readonly Dictionary<String, Item> _itemDictionary = new Dictionary<String, Item>()
+        private static readonly Dictionary<string, Item> _itemDictionary = new Dictionary<string, Item>()
         {
             {
                 "Лопата",
@@ -21,7 +20,6 @@
                     DropChance = 30,
                 }
             },
-
             {
                 "Удочка",
                 new Item()
@@ -32,7 +30,6 @@
 
                 }
             },
-
             {
                 "Бутылка",
                 new Item()
@@ -42,7 +39,6 @@
                     DropChance = 70,
                 }
             },
-
             {
                 "Мелочь",
                 new Item()
@@ -53,7 +49,6 @@
                     DropChance = 30,
                 }
             },
-
             { 
                 "Тулуп",
                 new Item()

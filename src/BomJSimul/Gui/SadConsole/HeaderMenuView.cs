@@ -1,8 +1,6 @@
 ﻿namespace BomJSimul.Gui.Sad
 {
     using System.Collections.ObjectModel;
-    using System.Text;
-    using BomJSimul.Gui.Sad.Themes;
     using Microsoft.Xna.Framework;
     using SadConsole;
 

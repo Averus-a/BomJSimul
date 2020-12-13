@@ -6,7 +6,7 @@
 
     internal class GameInfoView : Console
     {
-        private ControlsConsole _innerConsole;
+        private readonly ControlsConsole _innerConsole;
 
         public GameInfoView(Console mainConsole, string title = null, int width = 300, int height = 200)
             : base(width, height)

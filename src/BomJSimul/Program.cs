@@ -1,13 +1,11 @@
 ﻿namespace BomJSimul
 {
     using System;
-    using System.Reflection;
     using BomJSimul.Engine;
     using BomJSimul.GameLogic;
     using BomJSimul.Render;
     using Catel.IoC;
     using Catel.Logging;
-    using Terminal.Gui;
 
     public class Program
     {
@@ -24,8 +22,12 @@
                 Console.WriteLine(t.GetRandomItem());
 
                 var r = new BomJSimul.GameLogic.PlayerUsesSlotMachine();
-                var player = new Entities.Player();
-                player.Money = 100;
+                
+                var player = new Entities.Player
+                {
+                    Money = 100
+                };
+
                 player.Luck.Update(100);
                 Console.WriteLine(r.TryingToWinMoney(player, 10, 20));
                 Console.WriteLine($"Ваши деньги: {player.Money}");

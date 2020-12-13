@@ -13,7 +13,7 @@
     public class ThreadAwareRandom
     {
         private static readonly Random _global = new Random();
-        private Random _local; // Could make it completely thread-safe using ThreadLocal<>, but that is .Net 4.0 only :(
+        private readonly Random _local; // Could make it completely thread-safe using ThreadLocal<>, but that is .Net 4.0 only :(
 
         public ThreadAwareRandom()
         {

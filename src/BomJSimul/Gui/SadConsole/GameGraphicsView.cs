@@ -6,7 +6,7 @@
 
     internal class GameGraphicsView : Console
     {
-        private ControlsConsole _innerConsole;
+        private readonly ControlsConsole _innerConsole;
 
         public GameGraphicsView(Console mainConsole, string title = null, int width = 300, int height = 200)
             : base(width, height)
@@ -44,16 +44,20 @@
 
         }
 
-        private void DrawText(ControlsConsole _innerConsole, Color foreground)
+        private void DrawText(ControlsConsole innerConsole, Color foreground)
         {
             var r = new BomJSimul.GameLogic.PlayerUsesSlotMachine();
-            var player = new Entities.Player();
-            player.Money = 100;
+            
+            var player = new Entities.Player
+            {
+                Money = 100
+            };
+
             player.Luck.Update(100);
-            _innerConsole.Print(1, 0, $"{r.TryingToWinMoney(player, 10, 20)}");
-            _innerConsole.Print(1, 4, Transliteration.From($"Ваши деньги: {player.Money}"));
-            _innerConsole.Print(1, 5, Transliteration.From($"Ваша удача: {player.Luck.Level}"));
-            _innerConsole.Print(1, 6, Transliteration.From($"сяськи мосяськи "));
+            innerConsole.Print(1, 0, $"{r.TryingToWinMoney(player, 10, 20)}");
+            innerConsole.Print(1, 4, Transliteration.From($"Ваши деньги: {player.Money}"));
+            innerConsole.Print(1, 5, Transliteration.From($"Ваша удача: {player.Luck.Level}"));
+            innerConsole.Print(1, 6, Transliteration.From($"сяськи мосяськи "));
         }
     }
 }

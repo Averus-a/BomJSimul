@@ -13,9 +13,10 @@
     {
         private readonly ThreadAwareRandom _random;
         private readonly Dictionary<TKey, int> _weights;
-        private bool _listNeedsRebuilding;
 
         private readonly IList<ProbabilityBox> _probabilityBoxes;
+
+        private bool _listNeedsRebuilding;
         private long _heightPerBox;
 
         /// <summary>
@@ -44,14 +45,18 @@
         /// Create a new StaticWeightedRandomizer.
         /// </summary>
         public StaticWeightedRandomizer()
-            : this(new ThreadAwareRandom()) { }
+            : this(new ThreadAwareRandom()) 
+        { 
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StaticWeightedRandomizer{TKey}"/> class.
         /// Create a new StaticWeightedRandomizer with the given seed.
         /// </summary>
         public StaticWeightedRandomizer(int seed)
-            : this(new ThreadAwareRandom(seed)) { }
+            : this(new ThreadAwareRandom(seed)) 
+        { 
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StaticWeightedRandomizer{TKey}"/> class.
@@ -70,6 +75,7 @@
         }
 
         #region ICollection<T> stuff
+
         /// <summary>
         /// Returns the number of items currently in the list.
         /// </summary>
@@ -147,8 +153,7 @@
         /// <returns>Returns true if the item was successfully deleted, or false if it was not found.</returns>
         public bool Remove(TKey key)
         {
-            int weight;
-            if (!_weights.TryGetValue(key, out weight))
+            if (!_weights.TryGetValue(key, out int weight))
             {
                 return false;
             }
@@ -259,8 +264,7 @@
                 throw new ArgumentNullException("key", "key cannot be null");
             }
 
-            int weight;
-            if (!_weights.TryGetValue(key, out weight))
+            if (!_weights.TryGetValue(key, out int weight))
             {
                 throw new KeyNotFoundException("Key not found in StaticWeightedRandomizer: " + key);
             }
