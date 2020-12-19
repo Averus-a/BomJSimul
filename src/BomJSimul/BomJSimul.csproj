@@ -18,4 +18,8 @@
     <PackageReference Include="Terminal.Gui" Version="1.0.0-pre.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Gui\SadConsole\CanvasConsole\Themes\" />
+  </ItemGroup>
+
 </Project>
