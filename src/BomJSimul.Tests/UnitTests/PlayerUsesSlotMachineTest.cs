@@ -4,8 +4,6 @@
     using BomJSimul.GameLogic;
     using NUnit.Framework;
     using System;
-    using System.Collections.Generic;
-    using System.Text;
 
     [TestFixture]
     public class PlayerUsesSlotMachineTest
@@ -15,19 +13,18 @@
         internal void TryingToWinMoney(Player player, int rate, int maximumRate, Type expectedException)
         {
             Exception ex2 = null;
+
             try
             {
                 var slotMashin = new PlayerUsesSlotMachine();
                 slotMashin.TryingToWinMoney(player, rate, maximumRate);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex2 = ex;
             }
 
             Assert.AreEqual(ex2?.GetType(), expectedException);
         }
-
-
     }
 }

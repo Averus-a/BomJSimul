@@ -3,7 +3,7 @@
     using System;
     using BomJSimul.Entities;
 
-    internal class PlayerUsesSlotMachine
+    public class PlayerUsesSlotMachine
     {
         /// <summary>
         /// слотмашина.

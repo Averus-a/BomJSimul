@@ -1,6 +1,6 @@
 ﻿namespace BomJSimul.Entities
 {
-    internal class Stats
+    public class Stats
     {
         public Stats()
         {

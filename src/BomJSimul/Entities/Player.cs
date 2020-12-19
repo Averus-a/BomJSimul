@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    internal class Player
+    public class Player
     {
         private readonly List<MinorStats> _minorStats = new List<MinorStats>();
 
