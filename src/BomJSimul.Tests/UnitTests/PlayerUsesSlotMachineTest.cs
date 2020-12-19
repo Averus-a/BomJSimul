@@ -10,7 +10,7 @@
     {
         [Test]
         [TestCase(null, 10, 20, typeof(ArgumentException))]
-        internal void TryingToWinMoney(Player player, int rate, int maximumRate, Type expectedException)
+        public void TryingToWinMoney(Player player, int rate, int maximumRate, Type expectedException)
         {
             Exception ex2 = null;
 
