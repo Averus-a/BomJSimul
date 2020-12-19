@@ -1,5 +1,6 @@
 ﻿namespace BomJSimul.Gui.Sad
 {
+    using BomJSimul.Gui.Sad.Colors;
     using BomJSimul.Text;
     using Microsoft.Xna.Framework;
     using SadConsole;
@@ -11,7 +12,7 @@
         public GameInfoView(Console mainConsole, string title = null, int width = 300, int height = 200)
             : base(width, height)
         {
-            UsePrintProcessor = true;
+            UsePrintProcessor = true;         
 
             this.Parent = mainConsole;
 
@@ -23,6 +24,9 @@
 
             _innerConsole = new ControlsConsole(width - 2, height - 2);
             _innerConsole.Position = new Point(this.Position.X + 1, this.Position.Y + 1);
+
+            // Use custom colors
+            _innerConsole.ThemeColors = new GameViewColors();
 
             Fill(foregroundColor, backgroundColor, 0);
 

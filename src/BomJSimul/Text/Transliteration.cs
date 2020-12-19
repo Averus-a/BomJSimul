@@ -89,10 +89,10 @@
             Gost.Add("э", "eh");
             Gost.Add("ю", "yu");
             Gost.Add("я", "ya");
-            Gost.Add("«", string.Empty);
-            Gost.Add("»", string.Empty);
+            Gost.Add("«", "«");
+            Gost.Add("»", "»");
             Gost.Add("—", "-");
-            Gost.Add(" ", "-");
+            Gost.Add(" ", " ");
 
             Iso.Add("Є", "YE");
             Iso.Add("І", "I");
@@ -167,10 +167,10 @@
             Iso.Add("э", "e");
             Iso.Add("ю", "yu");
             Iso.Add("я", "ya");
-            Iso.Add("«", string.Empty);
-            Iso.Add("»", string.Empty);
+            Iso.Add("«", "«");
+            Iso.Add("»", "»");
             Iso.Add("—", "-");
-            Iso.Add(" ", "-");
+            Iso.Add(" ", " ");
         }
 
         public static string From(string text)
