@@ -19,7 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Gui\SadConsole\CanvasConsole\Themes\" />
+    <Folder Include="Gui\CanvasConsole\Themes\" />
+    <Folder Include="Gui\SadConsole\" />
   </ItemGroup>
 
 </Project>
