@@ -23,29 +23,29 @@
 
             var version = Assembly.GetExecutingAssembly().GetName().Version;
 
-            var gameGraphics = new BomJSimul.Gui.GuiCs.GameGraphicsView($"Симулятор Бомжа v{version}")
-            {
-                X = 0,
-                Y = 0,
-                Width = Dim.Percent(66),
-                Height = Dim.Percent(75),
-            };
+            //var gameGraphics = new BomJSimul.Gui.GuiCs.GameGraphicsView($"Симулятор Бомжа v{version}")
+            //{
+            //    X = 0,
+            //    Y = 0,
+            //    Width = Dim.Percent(66),
+            //    Height = Dim.Percent(75),
+            //};
 
-            var gameLog = new BomJSimul.Gui.GuiCs.GameLogView($"Сообщения")
-            {
-                X = 0,
-                Y = Pos.Percent(77),
-                Width = Dim.Percent(66),
-                Height = Dim.Fill(0),
-            };
+            //var gameLog = new BomJSimul.Gui.GameLogView($"Сообщения")
+            //{
+            //    X = 0,
+            //    Y = Pos.Percent(77),
+            //    Width = Dim.Percent(66),
+            //    Height = Dim.Fill(0),
+            //};
 
-            var gameInfo = new BomJSimul.Gui.GuiCs.GameInfoView($"Информация")
-            {
-                X = Pos.Percent(66),
-                Y = 0,
-                Width = Dim.Fill(0),
-                Height = Dim.Fill(0),
-            };
+            //var gameInfo = new BomJSimul.Gui.GuiCs.GameInfoView($"Информация")
+            //{
+            //    X = Pos.Percent(66),
+            //    Y = 0,
+            //    Width = Dim.Fill(0),
+            //    Height = Dim.Fill(0),
+            //};
 
             var menu = new MenuBar(
                 new MenuBarItem[]
@@ -62,10 +62,10 @@
                     })
                 });
 
-            toplLayer.Add(menu);
-            toplLayer.Add(gameGraphics);
-            toplLayer.Add(gameLog);
-            toplLayer.Add(gameInfo);
+            //toplLayer.Add(menu);
+            //toplLayer.Add(gameGraphics);
+            //toplLayer.Add(gameLog);
+            //toplLayer.Add(gameInfo);
 
             return toplLayer;
         }
