@@ -1,49 +1,13 @@
 ﻿namespace BomJSimul.Gui.Sad
 {
-    using BomJSimul.Gui.Sad.Colors;
-    using BomJSimul.Text;
-    using Microsoft.Xna.Framework;
     using SadConsole;
 
-    internal class GameInfoView : Console
+    internal class GameInfoView : GameViewBase
     {
-        private readonly ControlsConsole _innerConsole;
-
         public GameInfoView(Console mainConsole, string title = null, int width = 300, int height = 200)
-            : base(width, height)
+            : base(mainConsole, title, width, height)
         {
-            UsePrintProcessor = true;         
 
-            this.Parent = mainConsole;
-
-            var backgroundColor = Color.Blue;
-            var foregroundColor = Color.White;
-            var borderColor = Color.White;
-
-            this.Fill(foregroundColor, backgroundColor, 0);
-
-            _innerConsole = new ControlsConsole(width - 2, height - 2);
-            _innerConsole.Position = new Point(this.Position.X + 1, this.Position.Y + 1);
-
-            // Use custom colors
-            _innerConsole.ThemeColors = new GameViewColors();
-
-            Fill(foregroundColor, backgroundColor, 0);
-
-            _innerConsole.Parent = this;
-
-            _innerConsole.Fill(foregroundColor, Color.LightBlue, 0);
-
-            // Border & Header
-            this.DrawBorders(width, height, borderColor, backgroundColor);
-            DrawHeader(title, foregroundColor);
-        }
-
-        private void DrawHeader(string str, Color foreground)
-        {
-            var translatedHeader = Transliteration.From(str);
-
-            Print(1, 0, $" [c:g f:MediumPurple:Red:{translatedHeader.Length}]{translatedHeader} ");
         }
     }
 }

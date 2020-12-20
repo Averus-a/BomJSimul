@@ -5,8 +5,10 @@
     public class GameViewHostConsoleTheme : SadConsole.Themes.ControlsConsoleTheme
     {
         public override void Draw(ControlsConsole console, CellSurface hostSurface)
-        {          
-           base.Draw(console, hostSurface);
+        {
+            var textColor = console.ThemeColors;
+
+            base.Draw(console, hostSurface);
         }
     }
 }

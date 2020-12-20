@@ -25,7 +25,9 @@
             var headerMenuHeight = 1;
             var footerMenuHeight = 1;
 
+            // Set theme styles
             SadConsole.Themes.Library.Default.SetControlTheme(typeof(MenuItem), new MenuItemGenericTheme());
+            SadConsole.Themes.Library.Default.ControlsConsoleTheme = new GameViewHostConsoleTheme();
 
             var mainScreen = new Console(screenWidth, screenHeight);
 

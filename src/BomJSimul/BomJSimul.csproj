@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Gui\CanvasConsole\Themes\" />
-    <Folder Include="Gui\SadConsole\" />
+    <Folder Include="Gui\Consoles\CanvasConsole\Themes\" />
+    <Folder Include="ANSI\" />
   </ItemGroup>
 
 </Project>
