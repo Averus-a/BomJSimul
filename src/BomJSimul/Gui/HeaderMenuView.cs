@@ -30,6 +30,11 @@
         /// </summary>
         public void AttachMenu()
         {
+            if (_menuItems is null || _menuItems.Count == 0)
+            {
+                return;
+            }
+
             for (int i = 0; i < _menuItems.Count; i++)
             {
                 var currentMenu = _menuItems[i];
@@ -37,11 +42,18 @@
                 if (i > 0)
                 {
                     var previousMenu = _menuItems[i - 1];
-                    currentMenu.Position = new Point(previousMenu.Position.X + previousMenu.Width + 1, 0);
+                    currentMenu.Position = new Point(previousMenu.Position.X + previousMenu.Surface.Width + 1, 0);
                 }
 
                 Add(currentMenu);
             }
+        }
+
+        protected override void OnInvalidate()
+        {
+            RemoveAll();
+            AttachMenu();
+            base.OnInvalidate();
         }
     }
 }

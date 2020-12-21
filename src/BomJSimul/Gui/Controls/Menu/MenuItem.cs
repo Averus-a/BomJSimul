@@ -16,10 +16,27 @@
             Text = Transliteration.From(name);
         }
 
+        public MenuItem(string name, SizeToContent sizeToContent)
+            : this(10, 1, sizeToContent)
+        {
+            Text = Transliteration.From(name);
+        }
+
+
         public MenuItem(int width, int height)
-            : base(width, height)
+            : this(width, height, SizeToContent.Fixed)
         {
         }
+
+        public MenuItem(int width, int height, SizeToContent sizeToContent)
+            : base(width, height)
+        {
+            SizeToContent = sizeToContent;
+
+            // Reattach theme
+            //Theme.Attached(this);
+        }
+
 
         public List<MenuItem> ChildItems => _childItems;
 
@@ -28,6 +45,8 @@
         public Microsoft.Xna.Framework.Input.Buttons Hotkey { get; set; }
 
         public TaskCommand Command { get; set; }
+
+        public SizeToContent SizeToContent { get; } = SizeToContent.Fixed;
 
         public override void DoClick()
         {

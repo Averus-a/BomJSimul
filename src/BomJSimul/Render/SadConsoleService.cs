@@ -1,6 +1,7 @@
 ﻿namespace BomJSimul.Render
 {
     using System.Reflection;
+    using BomJSimul.Gui;
     using BomJSimul.Gui.Sad;
     using BomJSimul.Gui.Sad.Themes;
     using Microsoft.Xna.Framework;
@@ -48,18 +49,16 @@
 
             // menus
             var topMenu = new HeaderMenuView(mainScreen, headerMenuHeight);
-            topMenu.AddMenu(new MenuItem("Игра"));
-            topMenu.AddMenu(new MenuItem("Настройки"));
-            topMenu.AddMenu(new MenuItem("О программе"));
-            topMenu.AttachMenu();
+            topMenu.AddMenu(new MenuItem("Игра", SizeToContent.Stretch));
+            topMenu.AddMenu(new MenuItem("Настройки", SizeToContent.Stretch));
+            topMenu.AddMenu(new MenuItem("О программе", SizeToContent.Stretch));
 
             var footerMenu = new FooterMenuView(mainScreen, footerMenuHeight);
             footerMenu.Position = new Point(0, screenHeight - footerMenuHeight);
-            footerMenu.AddMenu(new MenuItem("F1 Помощь"));
-            footerMenu.AddMenu(new MenuItem("F2 Загрузить"));
-            footerMenu.AddMenu(new MenuItem("F3 Сохранить"));
-            footerMenu.AddMenu(new MenuItem("Q Выход"));
-            footerMenu.AttachMenu();
+            footerMenu.AddMenu(new MenuItem("F1 Помощь", SizeToContent.Stretch));
+            footerMenu.AddMenu(new MenuItem("F2 Загрузить", SizeToContent.Stretch));
+            footerMenu.AddMenu(new MenuItem("F3 Сохранить", SizeToContent.Stretch));
+            footerMenu.AddMenu(new MenuItem("Q Выход", SizeToContent.Stretch));
 
             return mainScreen;
         }
