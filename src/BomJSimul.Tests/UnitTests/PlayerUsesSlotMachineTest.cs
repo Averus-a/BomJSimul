@@ -4,14 +4,28 @@
     using BomJSimul.GameLogic;
     using NUnit.Framework;
     using System;
+    using System.Collections.Generic;
 
     [TestFixture]
     public class PlayerUsesSlotMachineTest
     {
-        [Test]
-        [TestCase(null, 10, 20, typeof(ArgumentException))]
-        public void TryingToWinMoney(Player player, int rate, int maximumRate, Type expectedException)
+        private static readonly Dictionary<string, Player> TestPlayers = new Dictionary<string, Player>()
         {
+            {"testPlayer", new Player()},
+            {"null", null}
+        };
+
+
+        [Test]
+        [TestCase("null", 10, 20, typeof(ArgumentException))]
+        [TestCase("testPlayer", 0, 20, typeof(ArgumentException))]
+        public void TryingToWinMoneyThrewException(string playerName, int rate, int maximumRate, Type expectedException)
+        {
+            if (!TestPlayers.TryGetValue(playerName,out var player))
+            {
+                throw new NotSupportedException();
+            }
+          
             Exception ex2 = null;
 
             try
@@ -24,7 +38,13 @@
                 ex2 = ex;
             }
 
-            Assert.AreEqual(ex2?.GetType(), expectedException);
+            Assert.AreEqual(expectedException, ex2?.GetType());
         }
+
+        //public void TryingToWinMoneyRatesAreValid(Player player, int rate, int maximumRate, Type expectedException)
+        // {
+        //     Exception ex2 = null;
+
+        // }
     }
 }

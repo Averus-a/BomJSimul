@@ -14,6 +14,16 @@
         /// <returns>возвращает рандомное число если денег больше чем ставка.</returns>
         public int? TryingToWinMoney(Player player, int rate, int maximumRate)
         {
+            if (player is null)
+            {
+                throw new ArgumentException($"{nameof(player)} не должен быть null!", nameof(player));
+            }
+
+            if (rate == 0)
+            {
+                throw new ArgumentException($"{nameof(rate)} не должен быть равен 0!", nameof(rate));
+            }
+
             if (player.Money >= rate)
             {
                 player.Money -= rate;
@@ -26,12 +36,14 @@
 
                     Console.WriteLine("Лузер Лузер!");
                 }
-
-                if (result == maximumRate)
+                else
                 {
-                    player.Luck.Update(1);
+                    if (result == maximumRate)
+                    {
+                        player.Luck.Update(1);
 
-                    Console.WriteLine("А ты фартовый!");
+                        Console.WriteLine("А ты фартовый!");
+                    }
                 }
 
                 return result;
